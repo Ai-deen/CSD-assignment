@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import userRouter from './routers/userRouter.js'
 import vendorRouter from './routers/vendorRouter.js'
-
+import vendorServer from './vendorServer.js'
 import productRouter from './routers/productRouter.js'
 import dotenv from 'dotenv'
 import orderRouter from './routers/orderRouter.js'
@@ -30,6 +30,7 @@ app.use(cors());
 
 app.use("/api/users", userRouter);
 app.use("/api/vendors",vendorRouter);
+app.use("/vs",vendorServer);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
 
@@ -37,7 +38,7 @@ app.get('/api/config/paypal', (req,res)=>{
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 })
 
-app.get('/',(req,res)=>res.status(200).send('Hello Debjit here. It is Amazon clone project.'))
+app.get('/',(req,res)=>res.status(200).send('working fine'))
 
 
 // Listening to  server
