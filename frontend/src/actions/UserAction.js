@@ -5,7 +5,10 @@ import {
   VENDOR_REGISTER_FAIL,
   VENDOR_SIGNIN_FAIL,
   VENDOR_SIGNIN_REQUEST,
-
+  VENDOR_DETAILS_REQUEST,
+  VENDOR_DETAILS_SUCCESS,
+  VENDOR_DETAILS_FAIL,
+  VENDOR_SIGNOUT,
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
@@ -157,7 +160,7 @@ export const signinVendor = (email, password) => async (dispatch) => {
       type: VENDOR_SIGNIN_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("vendorInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: VENDOR_SIGNIN_FAIL,
@@ -178,6 +181,13 @@ export const signout = () => (dispatch) => {
   });
 };
 
+export const vendorsignout = () => (dispatch) => {
+  localStorage.removeItem("vendorInfo");
+  dispatch({
+    type: VENDOR_SIGNOUT,
+  });
+};
+
 export const detailsUser = (userId) => async (dispatch, getState) => {
   dispatch({ type: USER_DETAILS_REQUEST, payload: userId });
   const {
@@ -194,6 +204,25 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     dispatch({ type: USER_DETAILS_FAIL, payload: message });
+  }
+};
+
+export const detailsVendor = (vendorId) => async (dispatch, getState) => {
+  dispatch({ type: VENDOR_DETAILS_REQUEST, payload: vendorId });
+  const {
+    vendorSignin: { vendorInfo },
+  } = getState();
+  try {
+    const { data } = await axios.get(API + `/api/vendors/${vendorId}`, {
+      headers: { Authorization: `Bearer ${vendorInfo?.token}` },
+    });
+    dispatch({ type: VENDOR_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: VENDOR_DETAILS_FAIL, payload: message });
   }
 };
 

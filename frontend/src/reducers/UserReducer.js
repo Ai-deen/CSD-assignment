@@ -72,7 +72,7 @@ export const vendorRegisterReducer = (state ={}, action) => {
         case VENDOR_REGISTER_REQUEST: 
             return {loading: true};
         case VENDOR_REGISTER_SUCCESS: 
-            return {loading: false, userInfo: action.payload};
+            return {loading: false, vendorInfo: action.payload};
         case VENDOR_REGISTER_FAIL: 
             return {loading: false, error: action.payload};
         default: 
@@ -87,7 +87,7 @@ export const vendorSigninReducer = (state ={}, action) => {
         case VENDOR_SIGNIN_REQUEST: 
             return {loading: true};
         case VENDOR_SIGNIN_SUCCESS: 
-            return {loading: false, userInfo: action.payload};
+            return {loading: false, vendorInfo: action.payload};
         case VENDOR_SIGNIN_FAIL: 
             return {loading: false, error: action.payload};
         case VENDOR_SIGNOUT: 
@@ -103,7 +103,7 @@ export const vendorDetailsReducer = (state ={loading: true}, action) =>{
         case VENDOR_DETAILS_REQUEST:
             return {loading: true};
         case VENDOR_DETAILS_SUCCESS:
-            return {loading: false, user: action.payload};
+            return {loading: false, vendor: action.payload};
         case VENDOR_DETAILS_FAIL:
             return {loading: false, error: action.payload};
         default:

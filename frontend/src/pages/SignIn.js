@@ -14,16 +14,22 @@ const SignIn = (props) => {
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
         : '/';
+    const redirect1 = props.location.search
+      ? props.location.search.split("=")[1]
+      : "/vendorhome";
 
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo, loading, error } = userSignin;
-
+    const vendorSignin = useSelector((state) => state.vendorSignin);
+    const { vendorInfo, loadin, eror } = vendorSignin;
     const dispatch = useDispatch();
 
     const signInHandler = (e) => {
         e.preventDefault();
 
         // Dispatch the appropriate sign-in action based on userType
+        console.log(userInfo)
+        console.log(vendorInfo)
         if (userType ==="vendor"){
             dispatch(signinVendor(email, password, userType));
         }
@@ -36,7 +42,10 @@ const SignIn = (props) => {
         if (userInfo) {
             props.history.push(redirect);
         }
-    }, [props.history, redirect, userInfo]);
+        if (vendorInfo) {
+            props.history.push(redirect1)
+        }
+    }, [props.history, redirect, userInfo,vendorInfo,dispatch]);
 
     return (
         <div className="signin-container">

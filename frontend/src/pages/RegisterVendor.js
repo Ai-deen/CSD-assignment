@@ -23,7 +23,7 @@ const RegisterVendor = (props) => {
 
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
-    : '/';
+    : '/vendorhome';
 
   const vendorRegister = useSelector((state) => state.vendorRegister);
   const { vendorInfo, loading, error } = vendorRegister;
@@ -52,11 +52,11 @@ const RegisterVendor = (props) => {
   };
 
   useEffect(() => {
+    console.log(vendorInfo);
     if (vendorInfo) {
       props.history.push(redirect);
     }
-  }, [props.history, redirect, vendorInfo]);
-
+  }, [props.history, redirect, vendorInfo,dispatch]);
   const handleBusinessTypeChange = (type) => {
     // Toggle the selected business type
     setBusinessTypes((prevTypes) => {
