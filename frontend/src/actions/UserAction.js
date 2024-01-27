@@ -3,7 +3,9 @@ import {
   VENDOR_REGISTER_REQUEST,
   VENDOR_REGISTER_SUCCESS,
   VENDOR_REGISTER_FAIL,
-  
+  VENDOR_SIGNIN_FAIL,
+  VENDOR_SIGNIN_REQUEST,
+
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
@@ -133,6 +135,32 @@ export const signin = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_SIGNIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const signinVendor = (email, password) => async (dispatch) => {
+  dispatch({
+    type: VENDOR_SIGNIN_REQUEST,
+    payload: { email, password },
+  });
+  try {
+    const { data } = await axios.post(API + "/api/vendors/signin", {
+      email,
+      password,
+    });
+    dispatch({
+      type: VENDOR_SIGNIN_SUCCESS,
+      payload: data,
+    });
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: VENDOR_SIGNIN_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

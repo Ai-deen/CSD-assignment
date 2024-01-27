@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signin } from '../actions/UserAction';
+import { signin, signinVendor } from '../actions/UserAction';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import "../styles/SignIn.css";
@@ -24,7 +24,12 @@ const SignIn = (props) => {
         e.preventDefault();
 
         // Dispatch the appropriate sign-in action based on userType
-        dispatch(signin(email, password, userType));
+        if (userType ==="vendor"){
+            dispatch(signinVendor(email, password, userType));
+        }
+        else {
+            dispatch(signin(email, password, userType));
+        }
     }
 
     useEffect(() => {
