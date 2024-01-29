@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import { vendorSignout } from "../actions/VendorActions";
 // import { detailsVendor } from "../actions/UserAction";
 import { signinVendor } from "../actions/UserAction";
@@ -14,14 +15,6 @@ const VendorHome = () => {
 //       dispatch(signinVendor());
 //   }, [dispatch]);
 
-//     const signinVendor = useSelector((state) => state.signinVendor); // Assuming you have a vendorInfo slice in your Redux store
-//     const { loading, error, vendorInfo } = signinVendor;
-//     console.log("Hello", vendorInfo)
-
-  //   const handleLogout = () => {
-  //     dispatch(vendorSignout());
-  //   };
-
   return (
     <div>
       {/* <h1>Welcome, {vendorInfo}!</h1> */}
@@ -29,10 +22,12 @@ const VendorHome = () => {
 
       {/* Example link to a product management page */}
       <p>
-        Manage your products <a href="/manage-products">here</a>.
+        Add a new product <Link to="/add-product">ADD PRODUCTS</Link>.
+      </p>
+      <p>
+        Manage your products <Link to="/manage-products">here</Link>.
       </p>
 
-      {/* Add more links or components for different vendor-related actions or information */}
 
       {/* <button onClick={handleLogout}>Logout</button> */}
     </div>

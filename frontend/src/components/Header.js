@@ -46,8 +46,8 @@ const Header = (props) => {
 
   const [query, setQuery] = useState("");
 
-  console.log("header", userInfo);
-  console.log("header", vendorInfo);
+  console.log("header user", userInfo);
+  console.log("header vendor", vendorInfo);
 
   return (
     <header>
