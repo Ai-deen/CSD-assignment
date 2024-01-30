@@ -11,6 +11,7 @@ import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import SearchIcon from "@material-ui/icons/Search";
 import logo from "../images/kasslogo.png";
+import { vendorUpdateProfileReducer } from "../reducers/UserReducer";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -108,7 +109,14 @@ const Header = (props) => {
                     }
                   >
                     <li>
-                      <Link to="/vendor-profile">Vendor Profile</Link>
+                      <Link to="/vendorhome">
+                        Vendor Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/vendor-profile">
+                        Vendor Profile
+                      </Link>
                     </li>
                     {/* Add other vendor-related links */}
                     <li>

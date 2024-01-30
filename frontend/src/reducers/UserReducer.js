@@ -64,9 +64,6 @@ export const userUpdateProfileReducer = (state = {}, action) => {
 };
 
 
-
-
-
 export const vendorRegisterReducer = (state ={}, action) => {
     switch(action.type){
         case VENDOR_REGISTER_REQUEST: 

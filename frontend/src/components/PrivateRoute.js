@@ -5,14 +5,17 @@ import {useSelector} from 'react-redux';
 const PrivateRoute = ({component: Component, ...rest}) => {
 
     const userSignin = useSelector((state) => state.userSignin);
-    const {userInfo} = userSignin;
+    const { userInfo } = userSignin;
+    
+    const vendorSignin = useSelector((state) => state.vendorSignin);
+    const { vendorInfo } = vendorSignin;
 
     return (
         <div>
             <Route 
             {...rest}
             render={(props) =>
-                userInfo? (
+                userInfo || vendorInfo? (
                     <Component {...props}></Component>
                 ) : 
                 (

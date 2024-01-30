@@ -13,6 +13,7 @@ import PlaceOrder from "../pages/PlaceOrder";
 import OrderDetails from "../pages/OrderDetails";
 import OrderHistory from "../pages/OrderHistory";
 import UserProfile from "../pages/UserProfile";
+import VendorProfile from "../pages/VendorProfile";
 import PrivateRoute from "./PrivateRoute";
 import SearchResults from "../pages/SearchResults";
 import AllProducts from "../pages/Admin/AllProducts";
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/order/:id" component={OrderDetails}></Route>
           <Route path="/orderhistory" component={OrderHistory}></Route>
           <PrivateRoute path="/profile" component={UserProfile}></PrivateRoute>
+          <PrivateRoute path="/vendor-profile" component={VendorProfile}></PrivateRoute>
           <Route
             path="/searchresults/:query"
             component={SearchResults}

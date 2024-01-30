@@ -12,7 +12,6 @@ const UserProfile = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpassword, setConfirmPassword] = useState('');
-    
     const userSignin = useSelector((state) => state.userSignin);
     const userDetails = useSelector((state) => state.userDetails);
     const userUpdateProfile = useSelector((state)=>state.userUpdateProfile);

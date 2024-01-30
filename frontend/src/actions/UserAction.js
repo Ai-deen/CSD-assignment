@@ -246,3 +246,24 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
   }
 };
+
+export const updateVendorProfile = (vendor) => async (dispatch, getState) => {
+  dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: vendor });
+  const {
+    vendorSignin: { vendorInfo },
+  } = getState();
+  try {
+    const { data } = await axios.put(API + `/api/vendors/vendor-profile`, vendor, {
+      headers: { Authorization: `Bearer ${vendorInfo.token}` },
+    });
+    dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
+    dispatch({ type: VENDOR_SIGNIN_SUCCESS, payload: data });
+    localStorage.setItem("vendorInfo", JSON.stringify(data));
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
+  }
+};
