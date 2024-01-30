@@ -1,15 +1,17 @@
+// Import required modules
 import express from "express";
 import mongoose from "mongoose";
 import expressAsyncHandler from "express-async-handler";
-import Product from './models/productsModel.js'
+import Product from './models/productsModel.js';
 import Vendor from './models/vendorModel.js';
 
+// Create an instance of Express router
 const app2 = express.Router();
 
+// Endpoint to get products associated with a vendor
 app2.get(
   "/:id/products",
   expressAsyncHandler(async (req, res) => {
-    // const vendorId = req.body.vendorId;
     const vendorId = req.params.id;
 
     try {
@@ -23,7 +25,7 @@ app2.get(
   })
 );
 
-
+// Endpoint to add a new product
 app2.post(
   "/postProduct",
   expressAsyncHandler(async (req, res) => {
@@ -61,8 +63,6 @@ app2.post(
         description: createdProduct.description,
         brand: createdProduct.brand,
         price: createdProduct.price,
-        //   isAdmin: createdProduct.isAdmin,
-        //   token: generateToken(createdVendor),
       });
     } catch (error) {
       // Handle validation errors
@@ -77,26 +77,26 @@ app2.post(
   })
 );
 
-  app2.get(
-    '/getVendorsByService',
-    expressAsyncHandler(async (req, res) => {
-      try {
-        const vendors = await Vendor.find({ businessTypes: 'service' });
-        res.status(200).json(vendors);
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
-      }
-    })
-  );
+// Endpoint to get vendors with business type 'service'
+app2.get(
+  '/getVendorsByService',
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const vendors = await Vendor.find({ businessTypes: 'service' });
+      res.status(200).json(vendors);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  })
+);
 
+// Endpoint to delete a product
 app2.delete(
   "/:vendorid/products/:productid",
   expressAsyncHandler(async (req, res) => {
     const vendorId = req.params.vendorid;
     const productId = req.params.productid;
-
-    // Perform any necessary validation or checks here...
 
     try {
       // Find the product by ID and remove it, ensuring it belongs to the specified vendor
@@ -107,7 +107,7 @@ app2.delete(
 
       if (product) {
         await product.remove();
-        res.status(200).send(export default app2;{ message: "Product deleted successfully" });
+        res.status(200).send({ message: "Product deleted successfully" });
       } else {
         res.status(404).send({ message: "Product not found" });
       }
@@ -118,4 +118,5 @@ app2.delete(
   })
 );
 
+// Export the router instance
 export default app2;

@@ -20,12 +20,9 @@ import AllProducts from "../pages/Admin/AllProducts";
 import CategoryBasedPage from "../pages/CategoryBasedPage";
 import VendorHome from "../vendorpages/VendorHome";
 import ProductForm from "../vendorpages/ProductForm";
-<<<<<<< HEAD
 import ServicePage from '../pages/Service';
 import VendorList from '../pages/ServicerList'
-=======
 import ManageProducts from "../vendorpages/ManageProducts";
->>>>>>> Srinidhi
 
 const App = () => {
   return (
