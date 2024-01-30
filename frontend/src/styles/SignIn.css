@@ -1,11 +1,13 @@
 .signin-container {
     max-width: 600px;
     margin: auto;
-    transform: translateY(50%);
+    margin-bottom: 40px;
     background-color: #d8f3ff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
 }
 
 .form {

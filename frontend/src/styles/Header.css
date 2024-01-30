@@ -3,6 +3,15 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+.mr-2 {
+  display: inline-flex;
+  align-items: center;
+}
+
+p {
+  
+  font-size: large;
+}
 
 a {
   text-decoration: none;
@@ -23,10 +32,10 @@ header .inner-content {
 
 .category-container {
   background-color: #7aa0cf;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-weight: 500;
   color: white;
-  margin: 35px 35px; /* Equal margins on both sides */
+  margin: 15px; /* Equal margins on both sides */
 }
 
 .category-container ul {
@@ -37,9 +46,7 @@ header .inner-content {
 
 .category-container ul li {
   display: inline-block;
-  margin-left: 10px;
-  margin-right: 140px;
-  justify-content: space-between;
+  margin-left: 10%; /* Use percentage for dynamic spacing */
 }
 
 .category-container ul li:last-child {

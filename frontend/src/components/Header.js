@@ -6,6 +6,7 @@ import { signout, vendorsignout } from "../actions/UserAction";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import SearchIcon from "@material-ui/icons/Search";
@@ -86,6 +87,14 @@ const Header = (props) => {
                 )}
               </Link>
             </li>
+            <li>
+                            <Link to="/service"><PhonelinkSetupIcon/>
+                                {
+                                    cartItems.length > 0 && 
+                                    (<p className="badge">{cartItems.length}</p>)
+                                }
+                            </Link>
+                        </li>
             <li>
               {vendorInfo ? (
                 <div className="header-dropdown">

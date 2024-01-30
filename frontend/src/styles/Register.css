@@ -1,7 +1,6 @@
 .register-container {
     max-width: 600px;
     margin: auto;
-    transform: translateY(20%);
     background-color: #d8f3ff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;

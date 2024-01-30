@@ -13,6 +13,8 @@ import {
   vendorDetailsReducer,
   vendorUpdateProfileReducer,
 } from "./reducers/UserReducer";
+import { serviceReducer} from './reducers/ServiceReducer';
+
 
 const initialState = {
     cart:{
@@ -51,6 +53,7 @@ const reducer = combineReducers({
   vendorSignin: vendorSigninReducer,
   vendorRegister: vendorDetailsReducer,
   vendorUpdateProfile: vendorUpdateProfileReducer,
+  service: serviceReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
