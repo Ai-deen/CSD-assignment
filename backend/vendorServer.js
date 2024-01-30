@@ -1,12 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import expressAsyncHandler from "express-async-handler";
-<<<<<<< HEAD
 import Product from './models/productsModel.js'
 import Vendor from './models/vendorModel.js';
-=======
-import Product from "./models/productsModel.js";
->>>>>>> Srinidhi
 
 const app2 = express.Router();
 
@@ -81,7 +77,6 @@ app2.post(
   })
 );
 
-<<<<<<< HEAD
   app2.get(
     '/getVendorsByService',
     expressAsyncHandler(async (req, res) => {
@@ -94,9 +89,6 @@ app2.post(
       }
     })
   );
-
-export default app2;
-=======
 
 app2.delete(
   "/:vendorid/products/:productid",
@@ -115,7 +107,7 @@ app2.delete(
 
       if (product) {
         await product.remove();
-        res.status(200).send({ message: "Product deleted successfully" });
+        res.status(200).send(export default app2;{ message: "Product deleted successfully" });
       } else {
         res.status(404).send({ message: "Product not found" });
       }
@@ -126,6 +118,4 @@ app2.delete(
   })
 );
 
-
 export default app2;
->>>>>>> Srinidhi
