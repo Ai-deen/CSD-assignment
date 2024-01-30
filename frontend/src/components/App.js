@@ -21,6 +21,7 @@ import CategoryBasedPage from "../pages/CategoryBasedPage";
 import VendorHome from "../vendorpages/VendorHome";
 import ProductForm from "../vendorpages/ProductForm";
 import ServicePage from '../pages/Service';
+import VendorList from '../pages/ServicerList'
 
 const App = () => {
   return (
@@ -53,8 +54,8 @@ const App = () => {
             component={SearchResults}
             exact
           ></Route>
-           <Route path="/service" component={ServicePage} />
-
+          <Route path="/servicerList" component={VendorList} />
+          <Route path="/services/:vendorId" component={ServicePage} />
           <Route
             path="/category/:cat"
             component={CategoryBasedPage}

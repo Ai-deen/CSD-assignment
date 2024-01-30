@@ -89,7 +89,7 @@ const Header = (props) => {
               </Link>
             </li>
             <li>
-                            <Link to="/service"><PhonelinkSetupIcon/>
+                            <Link to="/servicerList"><PhonelinkSetupIcon/>
                                 {
                                     cartItems.length > 0 && 
                                     (<p className="badge">{cartItems.length}</p>)

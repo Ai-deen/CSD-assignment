@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import expressAsyncHandler from "express-async-handler";
 import Product from './models/productsModel.js'
+import Vendor from './models/vendorModel.js';
 
 const app2 = express.Router();
 
@@ -54,6 +55,19 @@ app2.post(
         }
       }
     }) 
+  );
+
+  app2.get(
+    '/getVendorsByService',
+    expressAsyncHandler(async (req, res) => {
+      try {
+        const vendors = await Vendor.find({ businessTypes: 'service' });
+        res.status(200).json(vendors);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+      }
+    })
   );
 
 export default app2;
