@@ -56,17 +56,21 @@ const ServicePage = () => {
             </label>
 
 
-            <label>
-              Description:
-              <input
-                type="text"
-                name="description"
-                value={userInput.description}
-                onChange={handleChange}
-              />
-            </label>
+          <label class="resizable-input-container">
+            Description:
+            <input
+              type="text"
+              name="description"
+              value={userInput.description}
+              onChange={handleChange}
+              class="resizable-input"
+            />
+            <div class="resize-handle"></div>
+          </label>
 
-            <label>
+
+
+            <label class="resizable-input-container">
               Type:
               <input
                 type="text"
@@ -76,7 +80,7 @@ const ServicePage = () => {
               />
             </label>
 
-            <label>
+            <label class="resizable-input-container">
               Location:
               <input
                 type="text"

@@ -32,7 +32,6 @@ header .inner-content {
 
 .category-container {
   background-color: #7aa0cf;
-  padding: 10px 10px;
   font-weight: 500;
   color: white;
   margin: 15px; /* Equal margins on both sides */
@@ -85,7 +84,14 @@ header .brand a {
   font-size: 1.5rem;
 }
 
-.search-bar {
+
+header .brand a {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+
+.search-bar{
   display: flex;
   align-items: center;
   border-radius: 6px;
@@ -94,7 +100,7 @@ header .brand a {
   background-color: #f0c040;
 }
 
-.search-input {
+.search-input{
   padding: 12px;
   font-size: 18px;
   width: 100%;
@@ -102,19 +108,19 @@ header .brand a {
   border: 0;
 }
 
-.search-btn {
+.search-btn{
   cursor: pointer;
   text-align: center;
   outline: 0;
   border: 0;
   display: block;
 }
-
-.search-btn a {
+.search-btn a{
   display: block;
   color: #000000;
   padding: 6px;
 }
+
 
 header .nav-links {
   padding: 0;
@@ -169,7 +175,7 @@ header .nav-links li {
   right: 0;
   width: 100%;
   margin-top: 20px;
-  border: solid 1px white;
+  
   border-radius: 6px;
 }
 

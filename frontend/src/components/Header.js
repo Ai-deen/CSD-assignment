@@ -59,7 +59,7 @@ const Header = (props) => {
             <Link to="/">
               <div class="mr-2">
                 <img src={logo} width={40} height={40} class="pl-2 m-3" />
-                KASS Electronics
+                 KASS Electronics
               </div>
             </Link>
           </div>

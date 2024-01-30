@@ -38,7 +38,6 @@
   margin-bottom: 15px;
   width: 92%;
   padding: 20px;
-  border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   display: flex;
@@ -58,10 +57,7 @@ label {
 
 input {
   padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
   border-radius: 3px;
-  margin-left: 10px;
 }
 
 button {
@@ -92,11 +88,31 @@ ul {
 }
 
 li {
-  margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* CSS */
+.resizable-input-container {
+  position: relative;
+  width: 200px; /* Set an initial width */
+}
+
+.resizable-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  resize: horizontal; /* Allow horizontal resizing */
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px; /* Set the width of the drag handle */
+  height: 10px; /* Set the height of the drag handle */
+  background-color: #007bff;
+  cursor: ew-resize; /* Set cursor for horizontal resizing */
 }
 
 /* Back to home link styles */
