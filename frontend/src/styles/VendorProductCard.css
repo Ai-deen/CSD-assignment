@@ -1,0 +1,61 @@
+/* Add this CSS in your stylesheet or in a style tag in your component */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px;
+  width: 200px; /* Set the width of each card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px; /* Add some space between image and text */
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.product-card p {
+  margin: 8px 0;
+}
+
+.product-card .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card button {
+  padding: 8px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  background-color: #555a57;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.product-card button:hover {
+  background-color: #e19b59;
+}
+
+/* Add this CSS to your VendorProductCard.css file */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  z-index: 1000;
+  /* Add other styles as needed */
+}
+
