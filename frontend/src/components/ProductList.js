@@ -20,7 +20,6 @@ const ProductList = () => {
 
 
     return (
-
         <div className="home-product-container">
             {loading ? <LoadingBox />
             :
@@ -29,14 +28,13 @@ const ProductList = () => {
             (
                 <>
                 <h2 className="sec-title">Products</h2>
-                <div className="product-container">
-                    {products.map((product)=>{
-                        return(
-                            <Product key={product._id} product={product}/> 
-                        )
-                        })
-                    }
-                </div>
+                {products ? (
+                    <div className="product-container">
+                        {products.map((product) => (
+                            <Product key={product._id} product={product} />
+                        ))}
+                    </div>
+                ) : null}
                 </>
             )
             }

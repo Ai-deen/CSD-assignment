@@ -13,6 +13,7 @@ const Product = ({product}) => {
                 <img src= {product.image} alt=""/>
             </div>
             <h2>{product.name}</h2>
+            <h4> from {product.brand}</h4>
             <Rating rating={product.rating} numRev={product.numRev}/>
             <p>${product.price}</p>
         </div>

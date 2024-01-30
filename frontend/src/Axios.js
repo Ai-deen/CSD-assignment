@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "https://amazon-be-7evd.onrender.com"
+    baseURL: "http://localhost:4001" 
 })
 
 export default instance

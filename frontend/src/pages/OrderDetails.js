@@ -10,6 +10,8 @@ import axios from "../Axios"
 import {PayPalButton} from 'react-paypal-button-v2'
 import { ORDER_PAY_RESET } from '../constants/OrderConstant'
 
+const API = 'http://localhost:4001';
+
 const OrderDetails = (props) => {
 
     const orderID = props.match.params.id;
@@ -25,7 +27,7 @@ const OrderDetails = (props) => {
     useEffect(() => {
         
         const addPayPalScript = async () => {
-            const { data } = await axios.get('/api/config/paypal');
+            const { data } = await axios.get(API+'/api/config/paypal');
             const script = document.createElement('script');
 
             console.log(data);
