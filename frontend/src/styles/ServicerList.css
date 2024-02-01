@@ -1,0 +1,56 @@
+.ServicerLink {
+    color: inherit;
+    padding: 10px;
+    margin: 19px;
+    width: 260px;
+  }
+.Main-heading{
+      text-align: center;
+      padding: 10px;;
+  }
+.Servicer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 3px;
+    margin: 8px;
+    padding-left: 15px;
+    height: 210px;
+    width: 240px; /* Set the width of each card */
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.Servicer:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Servicer p {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left; 
+    color: #333; 
+    font-family: 'Arial', sans-serif; 
+    padding-left: 15px;
+    }
+.NavigateButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 25px;
+    }
+    
+.NavigateButton:hover {
+    background-color: orange;
+    }
+    

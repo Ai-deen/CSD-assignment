@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import axios from 'axios';
-
+import "../styles/ServicerList.css";
 const API = "http://localhost:4001";
 
 const VendorList = () => {
@@ -24,27 +24,18 @@ const VendorList = () => {
 
   return (
     <div>
-      <h2>Vendors Providing Services</h2>
+      <h2 className='Main-heading'>Vendors Providing Services</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {vendors.map((vendor) => (
-          <Link
-            key={vendor._id}
-            to={`/services/${vendor._id}`} // Use Link to navigate
-            style={{
-              textDecoration: 'none',
-              color: 'inherit',
-              border: '1px solid #ccc',
-              padding: '10px',
-              margin: '10px',
-              width: '200px',
-            }}
-          >
-            <div>
-              <p>Name: {vendor.name}</p>
-              <p>Shop Name: {vendor.shopName}</p>
-              <p>Shop Address: {vendor.shopAddress}</p>
-            </div>
-          </Link>
+          <div key={vendor._id} className='Servicer'>
+            <p>Name: {vendor.name}</p>
+            <p>Shop Name: {vendor.shopName}</p>
+            <p>Shop Address: {vendor.shopAddress}</p>
+            
+            <Link to={`/services/${vendor._id}`} className="ServicerLink">
+              <button className="NavigateButton">View Services</button>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
