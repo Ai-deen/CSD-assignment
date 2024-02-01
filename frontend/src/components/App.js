@@ -23,6 +23,7 @@ import ProductForm from "../vendorpages/ProductForm";
 import ServicePage from '../pages/Service';
 import VendorList from '../pages/ServicerList'
 import ManageProducts from "../vendorpages/ManageProducts";
+import Wishlist from "../pages/Wishlist";
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/placeorder" component={PlaceOrder}></Route>
           <Route path="/order/:id" component={OrderDetails}></Route>
           <Route path="/orderhistory" component={OrderHistory}></Route>
+          <Route path="/wishlist" component={Wishlist} />
           <PrivateRoute path="/profile" component={UserProfile}></PrivateRoute>
           <PrivateRoute path="/vendor-profile" component={VendorProfile}></PrivateRoute>
           <Route
