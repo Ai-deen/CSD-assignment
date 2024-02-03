@@ -15,7 +15,6 @@ import {
 } from "./reducers/UserReducer";
 import { serviceReducer} from './reducers/ServiceReducer';
 import { wishlistReducer } from './reducers/WishlistReducer';
-import { serviceReducer } from './reducers/ServiceReducer';
 
 const initialState = {
     cart: {
