@@ -50,6 +50,9 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
+    console.log("userInfo:", userInfo);
+    console.log("API:", API);
+
     const { data } = await axios.get(API + `/api/orders/${orderId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
@@ -68,25 +71,21 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
 export const payOrder = (order, paymentResult) => async (dispatch, getState) => {
   dispatch({
     type: ORDER_PAY_REQUEST,
-    payload: {order, paymentResult}
+    payload: { order, paymentResult },
   });
 
   const {
-    userSignin: {userInfo}
+    userSignin: { userInfo },
   } = getState();
 
-  try{
-    const {data} = await axios.put(API +`/api/orders/${order._id}/pay`, paymentResult, {
+  try {
+    const { data } = await axios.put(`${API}/api/orders/${order._id}/pay`, paymentResult, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
-    dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
 
-  }
-  catch(error){
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message;
+    dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
+  } catch (error) {
+    const message = error.response?.data?.message || error.message;
     dispatch({ type: ORDER_PAY_FAIL, payload: message });
   }
 };
