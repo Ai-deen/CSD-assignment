@@ -25,9 +25,9 @@ const RegisterVendor = (props) => {
     ? props.location.search.split('=')[1]
     : '/vendorhome';
 
-  const redirectp = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/vendor-profile';
+  // const redirectp = props.location.search
+  //   ? props.location.search.split('=')[1]
+  //   : '/vendor-profile';
     
 
   const vendorRegister = useSelector((state) => state.vendorRegister);
@@ -61,10 +61,10 @@ const RegisterVendor = (props) => {
     if (vendorInfo) {
       props.history.push(redirect);
     }
-    else{
-      props.history.push(redirectp);
-    }
-  }, [props.history, redirect,redirectp,vendorInfo,dispatch]);
+    // else{
+    //   props.history.push(redirectp);
+    // }
+  }, [props.history, redirect,vendorInfo,dispatch]);
   const handleBusinessTypeChange = (type) => {
     // Toggle the selected business type
     setBusinessTypes((prevTypes) => {
