@@ -5,6 +5,7 @@ import { registerVendor } from '../actions/UserAction';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import '../styles/Register.css';
+import { useHistory } from "react-router-dom";
 
 const RegisterVendor = (props) => {
   const [name, setName] = useState('');
@@ -14,11 +15,12 @@ const RegisterVendor = (props) => {
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isVendor, setIsVendor] = useState(true); // Set as true for vendor registration
+  const [shopImage, setShopImage] = useState("");
   const [shopName, setShopName] = useState('');
   const [shopAddress, setShopAddress] = useState('');
   const [shopLocation, setShopLocation] = useState('');
   const [businessTypes, setBusinessTypes] = useState([]); // Use an array for multiple business types
-
+  const history = useHistory();
   const businessTypeOptions = ['sell', 'rent', 'service'];
 
   const redirect = props.location.search
@@ -30,9 +32,10 @@ const RegisterVendor = (props) => {
   //   : '/vendor-profile';
     
 
-  const vendorRegister = useSelector((state) => state.vendorRegister);
-  const { vendorInfo, loading, error } = vendorRegister;
-
+  // const vendorRegister = useSelector((state) => state.vendorSignin);
+  // const { vendorInfo, loading, error } = vendorRegister;
+  const vendorSignin = useSelector((state) => state.vendorSignin);
+  const { vendorInfo, loading, error } = vendorSignin;
   const dispatch = useDispatch();
 
   const registerHandler = (e) => {
@@ -47,6 +50,7 @@ const RegisterVendor = (props) => {
           password,
           address,
           phoneNumber,
+          shopImage,
           shopName,
           shopAddress,
           shopLocation,
@@ -57,14 +61,19 @@ const RegisterVendor = (props) => {
   };
 
   useEffect(() => {
-    console.log(vendorInfo);
+    console.log("reg",vendorInfo)
     if (vendorInfo) {
-      props.history.push(redirect);
+      console.log(vendorInfo);
+      console.log(vendorInfo);
+      console.log(vendorInfo);
+      console.log(vendorInfo);
+      console.log(vendorInfo);
+      history.push("/vendorhome");
     }
     // else{
     //   props.history.push(redirectp);
     // }
-  }, [props.history, redirect,vendorInfo,dispatch]);
+  }, [props.history, redirect, vendorInfo,dispatch]);
   const handleBusinessTypeChange = (type) => {
     // Toggle the selected business type
     setBusinessTypes((prevTypes) => {
@@ -126,6 +135,17 @@ const RegisterVendor = (props) => {
             placeholder="Enter phone number"
             required
             onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </div>
+
+        <div className="form-ip-sec">
+          <label htmlFor="shopImage">Shop Image:</label>
+          <input
+            type="text"
+            id="shopImage"
+            placeholder="Shop Image"
+            required
+            onChange={(e) => setShopImage(e.target.value)}
           />
         </div>
 

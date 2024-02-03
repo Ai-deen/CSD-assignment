@@ -34,10 +34,6 @@ const ServicePage = () => {
   return (
     <div>
       <div className="row-container">
-      <Link to="/" className="back-res">
-        Back to home
-      </Link>
-
       
         <div className="col-4">
           <h1>Service Page</h1>
@@ -96,18 +92,7 @@ const ServicePage = () => {
           </form>
         </div>
 
-        <div className="col-4">
-          <h2>Services</h2>
-          <ul>
-            {services.map((service, index) => (
-              <li key={index}>
-                <p>{service.description}</p>
-                <p>Type: {service.type}</p>
-                <p>Location: {service.location}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        
         <div className="col-4">
           <h2>Services</h2>
           <ul>

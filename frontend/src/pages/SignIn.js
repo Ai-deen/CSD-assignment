@@ -105,7 +105,7 @@ const SignIn = (props) => {
                         {userType === 'user' ? (
                             <>
                                 New user?{' '}
-                                <Link to={`/register?redirect=${redirect}`}>
+                                <Link to={"/register"}>
                                     Create Account
                                 </Link>
                             </>
@@ -113,7 +113,7 @@ const SignIn = (props) => {
                         (
                             <>
                                 New Vendor?{' '}
-                                <Link to={`/registerVendor?redirect=${redirect}`}>
+                                <Link to={"/registerVendor"}>
                                     Create Account
                                 </Link>
                             </>
