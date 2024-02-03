@@ -1,0 +1,61 @@
+/* VendorList.css */
+.Serviceslist {
+  text-align: center; /* Center-align the content within the Serviceslist div */
+}
+
+h2 {
+    margin-top: 30px;
+  margin-bottom: 30px; /* Add margin for better spacing */
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 400px;
+  height: 400px;
+  border-radius: 15px;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.card div {
+  margin: 10px 10px 10px 10px; /* Adjust the values for top and bottom margins */
+}
+
+.card p.shop-info {
+  text-align: center; /* Center the shopName and shopAddress */
+}
+
+.vendor-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center contents horizontally */
+}
+
+.service-button {
+  background-color: #33705a; /* Green */
+  width: 70% !important;
+  border: none;
+  color: white;
+  padding: 10px 20px; /* Adjust the padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; /* Adjust the font size */
+}
+
+.service-button:hover {
+  background-color: #42ca48; /* Darker green on hover */
+}

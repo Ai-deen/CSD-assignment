@@ -1,0 +1,34 @@
+/* VendorHome.css */
+
+/* Style the VendorHome component */
+.vendor-home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Style the welcome message */
+.vendor-welcome-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style the links */
+.vendor-links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vendor-link {
+  margin: 10px;
+  font-size: 18px;
+  color: #007bff; /* Blue color, you can change it */
+  text-decoration: none;
+}
+
+.vendor-link:hover {
+  text-decoration: underline;
+}
