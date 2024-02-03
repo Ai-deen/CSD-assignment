@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema(
           ref: 'Product',
           required: true,
         },
-        number: { type: Number, unique: true },
+        itemNumber: { type: Number, unique: true },
       },
     ],
 
@@ -54,14 +54,13 @@ const orderSchema = new mongoose.Schema(
 
 orderSchema.index({ number: 1 }, { unique: true }); // Add this line to create a unique index on the 'number' field
 
-// Middleware to generate and assign a unique order number before saving
 orderSchema.pre('save', async function (next) {
   try {
     if (!this.number) {
       const latestOrder = await mongoose.model('Order').findOne().sort({ createdAt: -1 });
 
-      if (!latestOrder || !latestOrder.number) {
-        this.number = 1; // If no orders exist or the number is not available, start with 1
+      if (!latestOrder || !latestOrder.number || isNaN(latestOrder.number)) {
+        this.number = 1; // If no orders exist or the number is not available or not a number, start with 1
       } else {
         this.number = latestOrder.number + 1; // Increment the last order number
       }
@@ -72,6 +71,7 @@ orderSchema.pre('save', async function (next) {
     next(error);
   }
 });
+
 
 const Order = mongoose.model('Order', orderSchema);
 
