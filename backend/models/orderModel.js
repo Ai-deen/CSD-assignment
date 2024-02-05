@@ -1,12 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const orderSchema = new mongoose.Schema(
   {
-    // type: {
-    //   type: String,
-    //   enum: ["service", "buy", "rent"],
-    //   required: true,
-    // },
+    number: { type: Number, unique: true },
     orderItems: [
       {
         name: { type: String, required: true },
@@ -15,9 +11,10 @@ const orderSchema = new mongoose.Schema(
         price: { type: Number, required: true },
         product: {
           type: mongoose.Types.ObjectId,
-          ref: "Product",
+          ref: 'Product',
           required: true,
         },
+        number: { type: Number, unique: true },
       },
     ],
 
@@ -42,7 +39,7 @@ const orderSchema = new mongoose.Schema(
     totalPrice: { type: Number, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     isPaid: { type: Boolean, default: false },
@@ -55,8 +52,43 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
+orderSchema.index({ number: 1 }, { unique: true }); // Add this line to create a unique index on the 'number' field
+
+// Middleware to generate and assign a unique order number before saving
+orderSchema.pre('save', async function (next) {
+  try {
+    if (!this.number) {
+      const latestOrder = await mongoose.model('Order').findOne().sort({ createdAt: -1 });
+
+      if (!latestOrder || !latestOrder.number) {
+        this.number = 1; // If no orders exist or the number is not available, start with 1
+      } else {
+        this.number = latestOrder.number + 1; // Increment the last order number
+      }
+    }
+
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 const Order = mongoose.model('Order', orderSchema);
 
-export default Order;
+const createOrder = async (req, res) => {
+  try {
+    const order = new Order(req.body);
+    const createdOrder = await order.save();
+    res.status(201).send({ message: 'New order created.', order: createdOrder });
+  } catch (error) {
+    if (error.code === 11000 && error.keyPattern && error.keyPattern.number) {
+      // Handle duplicate key error for the number field
+      res.status(500).send({ message: 'Duplicate order number. Handle accordingly.' });
+    } else {
+      res.status(500).send({ message: 'Error creating order.', error: error.message });
+    }
+  }
+};
 
+
+export default Order ;

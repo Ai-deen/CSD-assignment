@@ -1,6 +1,6 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler'
-import Order from '../models/orderModel.js';
+import  Order  from '../models/orderModel.js';
 import { isAuth } from '../utils.js';
 
 const orderRouter = express.Router();
@@ -11,30 +11,49 @@ orderRouter.get('/mine', isAuth, expressAsyncHandler(async(req,res)=>{
     res.send(orders);
 }))
 
+const generateUniqueOrderNumber = async () => {
+    try {
+      const latestOrder = await Order.findOne().sort({ createdAt: -1 });
+      if (!latestOrder) {
+        return 1;
+      }
+      return latestOrder.number + 1;
+    } catch (error) {
+      console.error('Error generating order number:', error);
+      throw new Error('Error generating order number.');
+    }
+};
 
-orderRouter.post('/', isAuth ,expressAsyncHandler(async(req,res) => {
-        if(req.body.orderItems.length === 0){
-            res.status(400).send({
-                message: 'Cart is empty'
-            });
-        }
-        else{
-            const order = new Order({
-                orderItems: req.body.orderItems,
-                shippingAddress: req.body.shippingAddress,
-                paymentMethod: req.body.paymentMethod,
-                itemsPrice: req.body.itemsPrice,
-                shippingPrice: req.body.shippingPrice,
-                taxPrice: req.body.taxPrice,
-                totalPrice: req.body.totalPrice,
-                user: req.user._id
-            });
-            const createdOrder = await order.save();
-            res.status(201)
-            .send({message: "New order created.", order: createdOrder});
-        }
-    })
-);
+orderRouter.post('/', isAuth, expressAsyncHandler(async (req, res) => {
+    if (!req.user._id) {
+        res.status(401).send({ message: 'User not authenticated.' });
+        return;
+    }
+
+    const orderNumber = await generateUniqueOrderNumber();
+
+    const order = new Order({
+        orderItems: req.body.orderItems,
+        shippingAddress: req.body.shippingAddress,
+        paymentMethod: req.body.paymentMethod,
+        itemsPrice: req.body.itemsPrice,
+        shippingPrice: req.body.shippingPrice,
+        taxPrice: req.body.taxPrice,
+        totalPrice: req.body.totalPrice,
+        user: req.user._id, 
+        number: orderNumber, 
+    });
+
+    const createdOrder = await order.save();
+
+    res.status(201).send({
+        message: 'New order created.',
+        order: createdOrder,
+    });
+}));
+
+
+
 
 
 orderRouter.get('/:id', isAuth, expressAsyncHandler(async(req,res) => {
