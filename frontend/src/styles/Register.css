@@ -6,6 +6,11 @@
     padding: 20px;
     border-radius: 8px;
 }
+.error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+  }
 
 @media (max-width: 900px) {
     .register-container {

@@ -6,7 +6,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import "../styles/SignIn.css";
 
-function  SignIn(props){
+const  SignIn = (props)=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('user'); // Default to 'user' sign-in

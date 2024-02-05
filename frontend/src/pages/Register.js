@@ -14,10 +14,8 @@ const Register = (props) => {
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [location, setLocation] = useState('');
-
-  const redirect = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/';
+  const [errorMessage, setErrorMessage] = useState('');
+  const redirect = props.location?.search?.split('=')[1] ?? '/';
 
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
@@ -27,8 +25,9 @@ const Register = (props) => {
   const registerHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Password does not match.');
+      setErrorMessage('Password does not match.');
     } else {
+      setErrorMessage('');
       dispatch(register(name, email, password, address, location, phoneNumber));
     }
   };
@@ -41,13 +40,13 @@ const Register = (props) => {
 
   return (
     <div className="register-container">
-      <form className="form" onSubmit={registerHandler}>
+      <form className="form" onSubmit={registerHandler} data-testid="form">
         <div>
           <h1>Register</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <div className="form-ip-sec">
           <label htmlFor="name">Name:</label>
           <input
