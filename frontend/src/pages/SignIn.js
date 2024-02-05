@@ -6,34 +6,41 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import "../styles/SignIn.css";
 
-const SignIn = (props) => {
+function  SignIn(props){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('user'); // Default to 'user' sign-in
+    const [emailError, setEmailError] = useState('');
 
-    const redirect = props.location.search
-        ? props.location.search.split('=')[1]
-        : '/';
-    const redirect1 = props.location.search
-      ? props.location.search.split("=")[1]
-      : "/vendorhome";
-
+    const redirect = props.location?.search?.split('=')[1] ?? '/';
+    const redirect1 = props.location?.search?.split("=")[1] ?? "/vendorhome";
+    
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo, loading, error } = userSignin;
     const vendorSignin = useSelector((state) => state.vendorSignin);
     const { vendorInfo, loadin, eror } = vendorSignin;
     const dispatch = useDispatch();
 
+    function validateEmail(email){
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
     const signInHandler = (e) => {
         e.preventDefault();
 
-        // Dispatch the appropriate sign-in action based on userType
-        console.log(userInfo)
-        console.log(vendorInfo)
-        if (userType ==="vendor"){
-            dispatch(signinVendor(email, password, userType));
+        // Validate email format
+        if (!validateEmail(email)) {
+            setEmailError('Please enter a valid email address.');
+            return;
+        } else {
+            setEmailError('');
         }
-        else {
+
+        // Dispatch the appropriate sign-in action based on userType
+        if (userType === "vendor") {
+            dispatch(signinVendor(email, password, userType));
+        } else {
             dispatch(signin(email, password, userType));
         }
     }
@@ -45,17 +52,17 @@ const SignIn = (props) => {
         if (vendorInfo) {
             props.history.push(redirect1)
         }
-    }, [props.history, redirect, userInfo,vendorInfo,dispatch]);
+    }, [props.history, redirect, userInfo, vendorInfo, dispatch]);
 
     return (
         <div className="signin-container">
-            <form className="form" onSubmit={signInHandler}>
+            <form className="form" onSubmit={signInHandler} data-testid="form">
                 <div>
                     <h1>Sign In</h1>
                 </div>
                 {loading && <LoadingBox></LoadingBox>}
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
-                
+
                 {/* Two-column layout for user and vendor sign-in */}
                 <div className="form-ip-sec">
                     <label htmlFor="user-type">Sign In As:</label>
@@ -78,6 +85,7 @@ const SignIn = (props) => {
                         required
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {emailError && <div className="error-message">{emailError}</div>}
                 </div>
 
                 <div className="form-ip-sec">
@@ -109,15 +117,15 @@ const SignIn = (props) => {
                                     Create Account
                                 </Link>
                             </>
-                        ) : 
-                        (
-                            <>
-                                New Vendor?{' '}
-                                <Link to={`/registerVendor?redirect=${redirect}`}>
-                                    Create Account
-                                </Link>
-                            </>
-                        )}
+                        ) :
+                            (
+                                <>
+                                    New Vendor?{' '}
+                                    <Link to={`/registerVendor?redirect=${redirect}`}>
+                                        Create Account
+                                    </Link>
+                                </>
+                            )}
                     </div>
                 </div>
             </form>
