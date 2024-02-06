@@ -40,8 +40,8 @@ const Cart = (props) => {
         <div>
             <Link to="/" className="back-res">Back to home</Link>
 
-            <div className="row-container">
-                <div className="col-4">
+            <div className="cart-container">
+                <div className="col-10">
                     <h1>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
                         <MessageBox>
