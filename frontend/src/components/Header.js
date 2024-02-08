@@ -59,8 +59,8 @@ const Header = (props) => {
         <div className="inner-content">
           <div className="brand">
             <Link to="/">
-              <div class="mr-2">
-                <img src={logo} width={40} height={40} class="pl-2 m-3" />
+              <div className="mr-2">
+              <img src={logo} width={40} height={40} className="pl-2 m-3" />
                 KASS Electronics
               </div>
             </Link>
