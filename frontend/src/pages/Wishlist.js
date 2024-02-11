@@ -28,7 +28,7 @@ const Wishlist = (props) => {
 
     return (
         <div>
-            <Link to="/" className="back-res">
+            <Link to="/" className="back">
                 Back to home
             </Link>
 

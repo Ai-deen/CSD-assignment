@@ -1,20 +1,20 @@
 /* Wishlist.css */
 
-.back-res {
-  margin: 20px;
+.back{
+  margin: 40px;
   display: inline-block;
   text-decoration: none;
-  color: #333;
-  border: 1px solid #333;
+  color: #ffffff;
+  border: 1px solid #f8eeee;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.back-res:hover {
+.back:hover {
   background-color: #333;
   color: #fff;
 }
-
+/*
 .row-container {
   display: flex;
   justify-content: center;

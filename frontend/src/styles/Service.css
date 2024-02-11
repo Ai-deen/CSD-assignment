@@ -119,14 +119,16 @@ li {
 .back-res {
   display: inline-block;
   text-decoration: none;
-  color: #007bff;
+  color: #ffffff;
   margin-left: auto;
+  border: 1px solid #f8eeee;
+  border-radius: 5px;
+  padding: 10px;
 
 }
 
 .back-res:hover {
-  text-decoration: underline;
-  background-color: white;
+  background-color:grey;
   border-radius: 5px;
   padding: 5px;
 }
