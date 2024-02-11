@@ -92,18 +92,12 @@ const Header = (props) => {
             </li>
             <li>
               <Link to="/wishlist"><FavoriteIcon/>
-                {
-                  cartItems.length > 0 && 
-                  (<p className="badge">{cartItems.length}</p>)
-                }
+
               </Link>
             </li>
             <li>
               <Link to="/servicerList"><PhonelinkSetupIcon/>
-                {
-                  cartItems.length > 0 && 
-                  (<p className="badge">{cartItems.length}</p>)
-                }
+
               </Link>
             </li>
 
