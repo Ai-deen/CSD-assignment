@@ -74,7 +74,7 @@ const SearchResults = (props) => {
                     <div className="search-product-container">
 
                         {products.filter(product=>
-                                product.name.toLowerCase().includes(query.toLowerCase())
+                                (product.name.toLowerCase().includes(query.toLowerCase()) || product.description.toLowerCase().includes(query.toLowerCase()) || product.category.toLowerCase().includes(query.toLowerCase()) || product.brand.toLowerCase().includes(query.toLowerCase())) 
                                 && product.price <= range[1]
                                 && product.price >= range[0]
                             ).map(filteredProduct => (
