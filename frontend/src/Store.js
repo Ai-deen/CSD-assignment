@@ -14,9 +14,8 @@ import {
   vendorDetailsReducer,
   vendorUpdateProfileReducer,
 } from "./reducers/UserReducer";
-import { serviceReducer} from './reducers/ServiceReducer';
-import { wishlistReducer } from './reducers/WishlistReducer';
-
+import { serviceReducer } from './reducers/ServiceReducer';
+import wishlistReducer from './reducers/WishlistReducer'; 
 const initialState = {
     cart: {
         cartItems: localStorage.getItem('cartItems')
@@ -50,14 +49,14 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
-  vendorDetails:vendorDetailsReducer,
+  vendorDetails: vendorDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   vendorRegister: vendorRegisterReducer,
   vendorSignin: vendorSigninReducer,
   vendorRegister: vendorDetailsReducer,
   vendorUpdateProfile: vendorUpdateProfileReducer,
   service: serviceReducer,
-  wishlist:wishlistReducer
+  wishlist: wishlistReducer 
 });
 
 // Add logging to the thunk middleware

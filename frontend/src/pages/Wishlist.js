@@ -1,47 +1,71 @@
-// components/WishlistPage.js
-import React, { useState } from 'react';
-import '../styles/WishlistPage.css'; // Import the CSS file
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToWishlist, removeFromWishlist } from '../actions/WishlistActions';
+import { Link } from 'react-router-dom';
+import MessageBox from '../components/MessageBox';
+import '../styles/WishlistPage.css';
+import CancelIcon from '@material-ui/icons/Cancel';
 
-const WishlistPage = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+const Wishlist = (props) => {
+    const productID = props.match.params.id;
 
-  // Dummy data for wishlist items
-  const wishlistItems = [
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' },
-    // Add more wishlist items as needed
-  ];
+    const wishlist = useSelector((state) => state.wishlist);
+    const { wishlistItems, error } = wishlist;
 
-  // Handle item selection
-  const handleItemSelection = (e) => {
-    const selectedIds = Array.from(e.target.selectedOptions, (option) => option.value);
-    setSelectedItems(selectedIds);
-  };
+    console.log(productID);
 
-  // Handle removing selected items
-  const handleRemoveItems = () => {
-    // Logic to remove selected items from the wishlist
-    console.log('Removing items:', selectedItems);
-    // You can update the state or perform other actions based on selected items
-    setSelectedItems([]);
-  };
+    const dispatch = useDispatch();
 
-  return (
-    <div className="wishlist-container">
-      <h2>My Wishlist</h2>
-      <select className="wishlist-select" multiple onChange={handleItemSelection} value={selectedItems}>
-        {wishlistItems.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.name}
-          </option>
-        ))}
-      </select>
-      {selectedItems.length > 0 && (
-        <button className="remove-button" onClick={handleRemoveItems}>Remove Selected Items</button>
-      )}
-    </div>
-  );
+    useEffect(() => {
+        if (productID) {
+            dispatch(addToWishlist(productID));
+        }
+    }, [dispatch, productID]);
+
+    const removeProduct = (id) => {
+        dispatch(removeFromWishlist(id));
+    };
+
+    return (
+        <div>
+            <Link to="/" className="back-res">
+                Back to home
+            </Link>
+
+            <div className="row-container">
+                <div className="col-4">
+                    <h1>Wishlist</h1>
+                    {wishlistItems.length === 0 ? (
+                        <MessageBox>
+                            Wishlist is empty. <Link to="/">Go Shopping</Link>
+                        </MessageBox>
+                    ) : (
+                        <ul>
+                            {wishlistItems.map((item) => (
+                                <li key={item.product}>
+                                    <div className="row1">
+                                        <div className="small">
+                                            <img src={item.image} alt="" />
+                                        </div>
+
+                                        <div className="min-30">
+                                            <Link to={`/products/product/${item.product}`}>{item.name}</Link>
+                                        </div>
+
+                                        <div className="remove-btn">
+                                            <button type="button" onClick={() => removeProduct(item.product)}>
+                                                <CancelIcon />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default WishlistPage;
+export default Wishlist;
