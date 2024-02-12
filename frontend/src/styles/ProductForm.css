@@ -2,18 +2,27 @@
 
 .product-form-container {
   max-width: 600px;
-  max-height: 600px;
+  max-height: 650px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  margin-bottom: 15px;
+}
+
+.product-form-heading{
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 5px;
+  font-size: 2rem;;
 }
 
 .form-label {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
+  color: #555;
 }
 
 .form-input {
@@ -35,7 +44,7 @@
 }
 
 .form-button {
-  background-color: #007bff;
+  background-color: #e0b030;
   color: #fff;
   padding: 10px;
   border: none;
@@ -44,5 +53,5 @@
 }
 
 .form-button:hover {
-  background-color: #0056b3;
+  background-color: #d1a121;
 }
