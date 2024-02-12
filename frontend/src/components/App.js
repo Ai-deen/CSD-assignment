@@ -24,6 +24,7 @@ import ServicePage from '../pages/Service';
 import VendorList from '../pages/ServicerList'
 import ManageProducts from "../vendorpages/ManageProducts";
 import Wishlist from "../pages/Wishlist";
+import AdminHome from "../pages/Admin/AdminHome";
 
 const App = () => {
   return (
@@ -39,11 +40,7 @@ const App = () => {
           <Route exact path="/cart/:id?" component={Cart}></Route>
           <Route exact path="/signin" component={SignIn}></Route>
           <Route exact path="/register" component={Register}></Route>
-          <Route
-            exact
-            path="/registerVendor"
-            component={RegisterVendor}
-          ></Route>
+          <Route exact path="/registerVendor" component={RegisterVendor}></Route>
           <Route path="/products/product/:id" component={ProductPage}></Route>
           <Route path="/shipping" component={ShippingAddress}></Route>
           <Route path="/payment" component={PaymentMethod}></Route>
@@ -53,20 +50,12 @@ const App = () => {
           <Route path="/wishlist" component={Wishlist} />
           <PrivateRoute path="/profile" component={UserProfile}></PrivateRoute>
           <PrivateRoute path="/vendor-profile" component={VendorProfile}></PrivateRoute>
-          <Route
-            path="/searchresults/:query"
-            component={SearchResults}
-            exact
-          ></Route>
+          <Route path="/searchresults/:query" component={SearchResults} exact></Route>
           <Route path="/servicerList" component={VendorList} />
           <Route path="/services/:vendorId" component={ServicePage} />
-          <Route
-            path="/category/:cat"
-            component={CategoryBasedPage}
-            exact
-          ></Route>
+          <Route path="/category/:cat" component={CategoryBasedPage} exact ></Route>
 
-          {/* Admin sectiojn routes */}
+          <Route path="/adminhome" component={AdminHome}/>
 
           <Route path="/productlist" component={AllProducts}></Route>
         </Switch>

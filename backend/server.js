@@ -7,6 +7,7 @@ import vendorServer from "./vendorServer.js";
 import productRouter from "./routers/productRouter.js";
 import dotenv from "dotenv";
 import orderRouter from "./routers/orderRouter.js";
+import adminRouter from "./routers/adminRouter.js"
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use("/api/vendors", vendorRouter);
 app.use("/vs", vendorServer);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
+app.use("/as",adminRouter)
 
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
