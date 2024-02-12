@@ -18,31 +18,32 @@ const VendorHome = () => {
 
   return (
     <div className="vendor-home-container">
+      <div className="vendor-cardd-container"> 
       <p className="vendor-welcome-message">Welcome, {vendorInfo.name}!</p>
 
+      <div className="vendor-smallcard-container">
       <div className="vendor-links-container">
-        <p>
-          Add a new product{" "}
+        <p> Add a new product </p>
           <Link className="vendor-link" to="/add-product">
             ADD PRODUCTS
           </Link>
-          .
-        </p>
-        <p>
-          Manage your products{" "}
+        
+        </div>
+        <div className="vendor-links-container">
+        <p> Manage your products </p>
           <Link className="vendor-link" to="/manage-products">
-            here
+            MANAGE PRODUCTS
           </Link>
-          .
-        </p>
-        <p>
-          Manage your services{" "}
+        </div>
+        <div className="vendor-links-container">
+        <p> Manage your services </p>
           <Link className="vendor-link" to="/manage-services">
-            here
+          MANAGE SERVICES
           </Link>
-          .
-        </p>
+        
+        </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -2,17 +2,42 @@
 
 /* Style the VendorHome component */
 .vendor-home-container {
+  justify-content: center; /* Center items vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  background-color:white;
+  height: 70vh; /* Full height of the viewport */
+}
+
+.vendor-cardd-container {
+  margin-top: 0vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 60vh;
+  width: 50vw;
+  background-color: #f9f9f9; /* Light gray background color */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+}
+
+.vendor-smallcard-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 
 /* Style the welcome message */
 .vendor-welcome-message {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 2rem; /* Increase font size for better readability */
+  margin-bottom: 1rem; /* Decrease margin for better spacing */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Darker color for better contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Style the links */
@@ -20,15 +45,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
 }
 
 .vendor-link {
-  margin: 10px;
-  font-size: 18px;
-  color: #007bff; /* Blue color, you can change it */
-  text-decoration: none;
+  margin: 0.5rem 0; /* Adjust margin for better spacing */
+  font-size: 0.8rem; /* Increase font size for better readability */
+  color: #fff; /* White text color */
+  background-color: #e0b030; /* Yellow background color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Show pointer cursor on hover */
+  text-decoration: none; /* Remove default underline */
+  transition: background-color 0.3s; /* Smooth transition */
 }
 
 .vendor-link:hover {
-  text-decoration: underline;
+  background-color: #d1a121; /* Darker yellow on hover */
 }
+
