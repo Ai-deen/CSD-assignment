@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import "../styles/VendorProductCard.css";
+import VendorHeader from "./VendorHeader";
 
 const API = "http://localhost:4001";
 
@@ -117,6 +118,7 @@ const ManageProducts = () => {
 
   return (
     <div>
+    
       <h1>Manage Products</h1>
       {products.map((product) => (
         <div key={product._id} className="product-card">
@@ -152,10 +154,9 @@ const ManageProducts = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-          
             />
 
-            <label >Brand: </label>
+            <label>Brand: </label>
             <input
               type="text"
               name="brand"
@@ -166,7 +167,7 @@ const ManageProducts = () => {
             />
 
             {/* Add other input fields as needed */}
-            <label >Category: </label>
+            <label>Category: </label>
             <input
               type="text"
               name="category"
@@ -174,7 +175,6 @@ const ManageProducts = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              
             />
 
             <label>Price: </label>
@@ -187,7 +187,7 @@ const ManageProducts = () => {
               }
             />
 
-            <label >Stock: </label>
+            <label>Stock: </label>
             <input
               type="number"
               name="stock"
@@ -195,10 +195,9 @@ const ManageProducts = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              
             />
 
-            <label >Description: </label>
+            <label>Description: </label>
             <textarea
               name="description"
               value={formData.description}

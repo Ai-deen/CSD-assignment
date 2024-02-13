@@ -2,33 +2,148 @@
 
 /* Style the VendorHome component */
 .vendor-home-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: space-around;
+  /* background: linear-gradient(to bottom, #a957e4, #ffffff); */
 }
 
-/* Style the welcome message */
-.vendor-welcome-message {
+.vendor-header {
+  max-height: 70px;
+  display: flex;
   font-size: 24px;
-  margin-bottom: 20px;
+  padding: 10px 0 10px 0;
+  /* padding: 10px; */
+  width: 100vw;
+  /* border-bottom: 1px solid rgb(43, 0, 75); */
+  background-color: #2866b1;
+  justify-content: space-between;
+  /* margin-bottom: 20px; */
+  align-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  .img{
+    width: 90px;
+    height: 90px;
+    justify-self: flex-start;
+    /* margin-right: 20px; */
+    border-radius: 50%;
+  }
+}
+.vendor-header p {
+  font-size: larger;
+  color: #fff;
+}
+.header-account-dropdown {
+  position: relative;
+  display: flex;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.header-account-dropdown p{
+  font-size: x-large;
+  margin-right: 10px;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  display: block;
+  font-size: medium;
+  padding: 8px 12px;
+  margin: 2px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+.dropdown-menu button {
+  display: block;
+  font-size: medium;
+  width: auto !important;
+  margin: 2px;
+  padding: 8px 9.5px;
+  text-decoration: none;
+  color: #333;
+  background-color: transparent;
+  transition: background-color 0.5s, transform 0.s;
+}
+.dropdown-menu button:hover{
+  /* .button {
+    background-color: #fbacac;
+    transition: background-color 0.3s, transform 0.3s;
+  } */
+  background-color: #fbacac;
+  transform: scale(1);
+}
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
 }
 
 /* Style the links */
-.vendor-links-container {
+.vendor-menu-items {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: top;
+  background-color: whitesmoke;
+  /* justify-content: center; */
+  border-right: 1px solid #000;
+  /* border-image: linear-gradient(to bottom, #fff, #d2a3f6) 1; */
+  /* border-top: none; */
+}
+.vendor-item:hover{
+  background-color: rgb(225, 225, 225);
+  transition: background-color 0.3s;
+}
+.vendor-item{
+  display: flex;
+  border-bottom: 1px solid black;
+  justify-content: center;
+  /* margin: auto; */
+  padding: 30px;
+  font-size: 20px;
   align-items: center;
 }
 
 .vendor-link {
   margin: 10px;
-  font-size: 18px;
-  color: #007bff; /* Blue color, you can change it */
+  /* font-size: 18px; */
+  color: #007bff;
   text-decoration: none;
 }
 
 .vendor-link:hover {
   text-decoration: underline;
+}
+
+.graphs{
+  flex:2;
+  text-align: center;
+  background-color: white;
+}
+.vendor-menu{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: space-around; */
+  width: 100%;
+  height: 100%;
+}
+
+.vendor-home-brand {
+  /* justify-self: flex-start; */
+  margin-left: 20px;
 }

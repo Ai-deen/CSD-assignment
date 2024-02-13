@@ -20,7 +20,7 @@ orderRouter.post("/place", isAuth ,expressAsyncHandler(async(req,res) => {
         if(req){
             console.log("mg");
         }
-        console.log('Request Body:', req.body);
+        console.log('Request Body:', req);
         if(req.body.orderItems.length === 0){
             res.status(400).send({
                 message: 'Cart is empty'

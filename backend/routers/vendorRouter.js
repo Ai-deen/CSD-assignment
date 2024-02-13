@@ -1,6 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Vendor from "../models/vendorModel.js";
+import Service from "../models/serviceModel.js";
 import bcrypt from "bcryptjs";
 import { generateToken, isAuth } from "../utils.js";
 
@@ -95,6 +96,34 @@ vendorRouter.get(
       res.status(404).send({
         message: "Vendor not found",
       });
+    }
+  })
+);
+
+vendorRouter.get(
+  "/:id/services",
+  expressAsyncHandler(async (req, res) => {
+    const vendorId = req.params.id;
+    const services = await Service.find({ vendor: vendorId });
+    if (services) {
+      res.status(200).json(services);
+    }
+    else {
+      res.status(404).send({ message: "No Services for the vendor" });
+    }
+  })
+);
+
+vendorRouter.put(
+  "/:id/services/:serviceId/complete",
+  expressAsyncHandler(async (req, res) => {
+    const service = await Service.findById(req.params.serviceId);
+    if (service) {
+      service.isDone = true;
+      const updatedService = await service.save();
+      res.send(updatedService);
+    } else {
+      res.status(404).send({ message: "Service not found" });
     }
   })
 );

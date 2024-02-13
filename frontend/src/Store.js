@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import { cartReducer } from './reducers/CartReducer';
+import { cartReducer, servicecartReducer } from './reducers/CartReducer';
 import { orderCreateReducer, orderDetailsReducer, orderMineListReducer, orderPayReducer } from './reducers/OrderReducer';
 import { prodcutDetailsReducer, prodcutListReducer } from './reducers/ProductReducer';
 import {
@@ -12,30 +12,39 @@ import {
   vendorSigninReducer,
   vendorDetailsReducer,
   vendorUpdateProfileReducer,
+  deliveryRegisterReducer,
+  deliverySigninReducer,
+  deliveryDetailsReducer,
+  deliveryUpdateProfileReducer,
 } from "./reducers/UserReducer";
-import { serviceReducer} from './reducers/ServiceReducer';
+import { serviceCreateReducer, serviceDetailsReducer, serviceMineListReducer, servicePayReducer, serviceReducer} from './reducers/ServiceReducer';
 
 
 const initialState = {
-    cart:{
-        cartItems: localStorage.getItem('cartItems')
-         ? JSON.parse(localStorage.getItem('cartItems'))
-         : [],
-        shippingAddress: localStorage.getItem('shippingAddress')
-         ? JSON.parse(localStorage.getItem('shippingAddress'))
-         : {},
-        paymentMethod: 'PayPal',
-    },
-    userSignin:{
-        userInfo: localStorage.getItem('userInfo')
-         ? JSON.parse(localStorage.getItem('userInfo'))
-         : null,
-    },
-    vendorSignin: {
-        vendorInfo: localStorage.getItem("vendorInfo")
-        ? JSON.parse(localStorage.getItem("vendorInfo"))
-        : null,
-    },
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {},
+    paymentMethod: "PayPal",
+  },
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
+  vendorSignin: {
+    vendorInfo: localStorage.getItem("vendorInfo")
+      ? JSON.parse(localStorage.getItem("vendorInfo"))
+      : null,
+  },
+  deliverySignin: {
+    vendorInfo: localStorage.getItem("deliveryInfo")
+      ? JSON.parse(localStorage.getItem("deliveryInfo"))
+      : null,
+  },
 };
 const reducer = combineReducers({
   productList: prodcutListReducer,
@@ -48,13 +57,20 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
-  vendorDetails:vendorDetailsReducer,
+  vendorDetails: vendorDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   vendorRegister: vendorRegisterReducer,
   vendorSignin: vendorSigninReducer,
-  vendorRegister: vendorDetailsReducer,
   vendorUpdateProfile: vendorUpdateProfileReducer,
-  service: serviceReducer
+  deliveryRegister: deliveryRegisterReducer,
+  deliverySignin: deliverySigninReducer,
+  deliveryDetails: deliveryDetailsReducer,
+  deliveryUpdateProfile: deliveryUpdateProfileReducer,
+  servicecart: servicecartReducer,
+  serviceCreate: serviceCreateReducer,
+  serviceDetails: serviceDetailsReducer,
+  servicePay: servicePayReducer,
+  serviceMineList: serviceMineListReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

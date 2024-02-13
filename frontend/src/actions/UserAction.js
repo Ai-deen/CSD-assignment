@@ -1,4 +1,14 @@
 import {
+  DELIVERY_SIGNIN_SUCCESS,
+  DELIVERY_REGISTER_REQUEST,
+  DELIVERY_REGISTER_FAIL,
+  DELIVERY_REGISTER_SUCCESS,
+  DELIVERY_SIGNIN_FAIL,
+  DELIVERY_SIGNIN_REQUEST,
+  DELIVERY_SIGNOUT,
+  DELIVERY_DETAILS_REQUEST,
+  DELIVERY_DETAILS_FAIL,
+  DELIVERY_DETAILS_SUCCESS,
   VENDOR_SIGNIN_SUCCESS,
   VENDOR_REGISTER_REQUEST,
   VENDOR_REGISTER_SUCCESS,
@@ -122,6 +132,42 @@ export const registerVendor =
     }
   };
 
+export const registerDelivery =
+  (name, email, password, location, phoneNumber, vehicleInfo) =>
+  async (dispatch) => {
+    dispatch({
+      type: DELIVERY_REGISTER_REQUEST,
+      payload: { email, password },
+    });
+    try {
+      const { data } = await axios.post(API + "/api/delivery/register", {
+        name,
+        email,
+        password,
+        location,
+        phoneNumber,
+        vehicleInfo,
+      });
+      dispatch({
+        type: DELIVERY_REGISTER_SUCCESS,
+        payload: data,
+      });
+      dispatch({
+        type: DELIVERY_SIGNIN_SUCCESS,
+        payload: data,
+      });
+      localStorage.setItem("DeliveryInfo", JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: DELIVERY_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
 export const signin = (email, password) => async (dispatch) => {
   dispatch({
     type: USER_SIGNIN_REQUEST,
@@ -174,6 +220,32 @@ export const signinVendor = (email, password) => async (dispatch) => {
   }
 };
 
+export const signinDelivery = (email, password) => async (dispatch) => {
+  dispatch({
+    type: DELIVERY_SIGNIN_REQUEST,
+    payload: { email, password },
+  });
+  try {
+    const { data } = await axios.post(API + "/api/delivery/signin", {
+      email,
+      password,
+    });
+    dispatch({
+      type: DELIVERY_SIGNIN_SUCCESS,
+      payload: data,
+    });
+    localStorage.setItem("DeliveryInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: DELIVERY_SIGNIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 export const signout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("cartItems");
@@ -187,6 +259,13 @@ export const vendorsignout = () => (dispatch) => {
   localStorage.removeItem("vendorInfo");
   dispatch({
     type: VENDOR_SIGNOUT,
+  });
+};
+
+export const Deliverysignout = () => (dispatch) => {
+  localStorage.removeItem("DeliveryInfo");
+  dispatch({
+    type: DELIVERY_SIGNOUT,
   });
 };
 
@@ -228,6 +307,26 @@ export const detailsVendor = (vendorId) => async (dispatch, getState) => {
   }
 };
 
+
+export const detailsDelivery = (DeliveryId) => async (dispatch, getState) => {
+  dispatch({ type: DELIVERY_DETAILS_REQUEST, payload: DeliveryId });
+  const {
+    vendorSignin: { DeliveryInfo },
+  } = getState();
+  try {
+    const { data } = await axios.get(API + `/api/delivery/${DeliveryId}`, {
+      headers: { Authorization: `Bearer ${DeliveryInfo?.token}` },
+    });
+    dispatch({ type: DELIVERY_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: DELIVERY_DETAILS_FAIL, payload: message });
+  }
+};
+
 export const updateUserProfile = (user) => async (dispatch, getState) => {
   dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: user });
   const {
@@ -255,9 +354,13 @@ export const updateVendorProfile = (vendor) => async (dispatch, getState) => {
     vendorSignin: { vendorInfo },
   } = getState();
   try {
-    const { data } = await axios.put(API + `/api/vendors/vendor-profile`, vendor, {
-      headers: { Authorization: `Bearer ${vendorInfo.token}` },
-    });
+    const { data } = await axios.put(
+      API + `/api/vendors/vendor-profile`,
+      vendor,
+      {
+        headers: { Authorization: `Bearer ${vendorInfo.token}` },
+      }
+    );
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
     dispatch({ type: VENDOR_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("vendorInfo", JSON.stringify(data));

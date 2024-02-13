@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import VendorHome from "./VendorHome";
-import '../styles/ProductForm.css';
+import VendorHeader from "./VendorHeader";
+import "../styles/ProductForm.css";
 const API = "http://localhost:4001";
 
 const initialFormData = {
@@ -87,86 +88,87 @@ const ProductForm = () => {
     return <p>Please sign in as a vendor to add products.</p>;
   }
 
-
   return (
-    <div className="product-form-container">
-      <h2>Add New Product</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Render your form inputs here */}
-        <label className="form-label">Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+    <div>
+      <div className="product-form-container">
+        <h2 style={{ padding: "10px 10px 10px 0" }}>Add New Product</h2>
+        <form onSubmit={handleSubmit}>
+          {/* Render your form inputs here */}
+          <label className="form-label">Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <label className="form-label">Image: </label>
-        <input
-          type="text"
-          name="image"
-          value={formData.image}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          <label className="form-label">Image: </label>
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <label className="form-label">Brand: </label>
-        <input
-          type="text"
-          name="brand"
-          value={formData.brand}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          <label className="form-label">Brand: </label>
+          <input
+            type="text"
+            name="brand"
+            value={formData.brand}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        {/* Add other input fields as needed */}
-        <label className="form-label">Category: </label>
-        <input
-          type="text"
-          name="category"
-          value={formData.category}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          {/* Add other input fields as needed */}
+          <label className="form-label">Category: </label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <label className="form-label">Price: </label>
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          <label className="form-label">Price: </label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <label className="form-label">Stock: </label>
-        <input
-          type="number"
-          name="stock"
-          value={formData.stock}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          <label className="form-label">Stock: </label>
+          <input
+            type="number"
+            name="stock"
+            value={formData.stock}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <label className="form-label">Description: </label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-          className="form-input"
-          required
-        />
+          <label className="form-label">Description: </label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            className="form-input"
+            required
+          />
 
-        <button type="submit" className="form-button">
-          Submit
-        </button>
-      </form>
+          <button type="submit" className="form-button">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

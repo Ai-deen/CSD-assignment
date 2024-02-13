@@ -1,0 +1,51 @@
+.services-container {
+  margin-top: 20px;
+}
+
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.service-card {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.service-details h3 {
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-link {
+  text-decoration: none;
+  color: #007bff;
+  padding: 10px;
+}
+
+.mark-done-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.mark-done-btn:hover {
+  background-color: #218838;
+}

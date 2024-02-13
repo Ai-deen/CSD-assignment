@@ -64,10 +64,6 @@ const RegisterVendor = (props) => {
     console.log("reg",vendorInfo)
     if (vendorInfo) {
       console.log(vendorInfo);
-      console.log(vendorInfo);
-      console.log(vendorInfo);
-      console.log(vendorInfo);
-      console.log(vendorInfo);
       history.push("/vendorhome");
     }
     // else{

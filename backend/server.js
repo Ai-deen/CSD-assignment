@@ -7,6 +7,8 @@ import vendorServer from "./vendorServer.js";
 import productRouter from "./routers/productRouter.js";
 import dotenv from "dotenv";
 import orderRouter from "./routers/orderRouter.js";
+import deliveryRouter from "./routers/deliveryRouter.js";
+import serviceRouter from "./routers/serviceRouter.js";
 
 dotenv.config();
 
@@ -26,6 +28,8 @@ app.use(cors());
 app.use("/api/users", userRouter);
 app.use("/api/vendors", vendorRouter);
 app.use("/vs", vendorServer);
+app.use("/api/services", serviceRouter);
+app.use("/api/delivery", deliveryRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
 

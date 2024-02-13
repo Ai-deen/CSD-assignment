@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import "../styles/ServiceCard.css"; // Import or create a CSS file for styling
+import { Link } from "react-router-dom";
+import '../styles/Manageservices.css';
 
 const API = "http://localhost:4001";
 
@@ -13,11 +14,10 @@ const ManageServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    // Fetch services associated with the logged-in vendor
     const fetchServices = async () => {
       try {
         const response = await axios.get(
-          `${API}/vs/${vendorInfo._id}/services`
+          API + `/api/vendors/${vendorInfo._id}/services`
         );
         setServices(response.data);
       } catch (error) {
@@ -28,21 +28,17 @@ const ManageServices = () => {
       }
     };
 
-    // Check if vendorInfo is available before making the request
     if (vendorInfo) {
       fetchServices();
     }
   }, [vendorInfo]);
 
-  // Function to handle marking a service as completed
   const handleMarkAsCompleted = async (serviceId) => {
     try {
-      // Make API call to mark the service as completed
-      await axios.put(`${API}/vs/services/${serviceId}/complete`);
-      // Update the service list after marking as completed
+      await axios.put(API + `/api/services/${serviceId}/complete`);
       setServices((prevServices) =>
         prevServices.map((service) =>
-          service._id === serviceId ? { ...service, completed: true } : service
+          service._id === serviceId ? { ...service, isDone: true } : service
         )
       );
     } catch (error) {
@@ -50,22 +46,34 @@ const ManageServices = () => {
     }
   };
 
+  console.log(services);
+
   return (
-    <div>
+    <div className="services-container">
       <h1>Manage Services</h1>
-      {services.map((service) => (
-        <div key={service._id} className="service-card">
-          <h3>{service.name}</h3>
-          <p>Description: {service.description}</p>
-          <p>Price: ${service.price}</p>
-          <p>Status: {service.completed ? "Completed" : "Pending"}</p>
-          {!service.completed && (
-            <button onClick={() => handleMarkAsCompleted(service._id)}>
-              Mark as Completed
-            </button>
-          )}
-        </div>
-      ))}
+      <div className="services-list">
+        {services.map((service) => (
+          <div key={service._id} className="service-card">
+            <div className="service-details">
+              <h3>Service ID: {service._id}</h3>
+              <p>Total Price: ${service.totalPrice}</p>
+            </div>
+            <div className="button-container">
+              <Link to={`/service/${service._id}`} className="service-link">
+                View Details
+              </Link>
+              {!service.isDone && (
+                <button
+                  onClick={() => handleMarkAsCompleted(service._id)}
+                  className="mark-done-btn"
+                >
+                  Mark as Done
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
