@@ -15,9 +15,9 @@ const port = process.env.PORT || 4000;
 const connection_url = process.env.MONGO_URI;
 
 mongoose.connect(connection_url, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useCreateIndex: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 });
 
 app.use(express.json());
