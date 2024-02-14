@@ -135,7 +135,7 @@ const Home = () => {
 }
 const footerStyle = {
     backgroundColor: '#f8f9fa',
-    padding: '20px',
+    padding: '10px',
     textAlign: 'center',
     position: 'fixed',
     left: 0,

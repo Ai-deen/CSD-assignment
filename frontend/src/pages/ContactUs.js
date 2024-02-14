@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Contact = () => {
     return (
         <div>
-            <div className="square-container">
+            <div className="contact-container">
                 <div className="about-container">
                     <h1 className="about-heading">Contact Us</h1>
                     <p className="about-description">
