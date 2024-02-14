@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import VendorHome from "./VendorHome";
 import '../styles/ProductForm.css';
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const initialFormData = {
   name: "",

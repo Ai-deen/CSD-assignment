@@ -2,7 +2,7 @@ import {ADD_SERVICE_REQUEST, ADD_SERVICE_SUCCESS, ADD_SERVICE_FAILURE } from "..
 import axios from "../Axios"
 import { SERVICE_EMPTY} from "../constants/ServiceConstant";
 
-const API = 'http://localhost:4001';
+const API = 'https://kass.onrender.com';
 
 export const addService = (serviceData) => async (dispatch, getState) => {
     dispatch({

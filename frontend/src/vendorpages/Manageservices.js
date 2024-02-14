@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import "../styles/ServiceCard.css"; // Import or create a CSS file for styling
 
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const ManageServices = () => {
   const vendorSignin = useSelector((state) => state.vendorSignin);

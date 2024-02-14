@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import axios from 'axios';
 import "../styles/ServicerList.css";
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const VendorList = () => {
   const [vendors, setVendors] = useState([]);

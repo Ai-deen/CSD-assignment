@@ -10,7 +10,7 @@ import axios from "../Axios"
 import {PayPalButton} from 'react-paypal-button-v2'
 import { ORDER_PAY_RESET } from '../constants/OrderConstant'
 
-const API = 'http://localhost:4001';
+const API = 'https://kass.onrender.com';
 
 const OrderDetails = (props) => {
 
