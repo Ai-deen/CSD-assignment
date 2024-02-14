@@ -24,6 +24,8 @@ import ServicePage from '../pages/Service';
 import VendorList from '../pages/ServicerList'
 import ManageProducts from "../vendorpages/ManageProducts";
 import Wishlist from "../pages/Wishlist";
+import About from "../pages/AboutUs";
+import Contact from "../pages/ContactUs";
 
 const App = () => {
   return (
@@ -39,6 +41,8 @@ const App = () => {
           <Route exact path="/cart/:id?" component={Cart}></Route>
           <Route exact path="/signin" component={SignIn}></Route>
           <Route exact path="/register" component={Register}></Route>
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
           <Route
             exact
             path="/registerVendor"
