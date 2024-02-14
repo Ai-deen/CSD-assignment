@@ -54,9 +54,7 @@ const Cart = (props) => {
                                     <li key={item.product}>
                                         <div className="row1">
                                             <div className="small">
-                                                <img src={item.image}
-                                                alt= ""
-                                                ></img>
+                                             <img src={item.image} alt="Product Image" />
                                             </div>
 
                                             <div className="min-30">

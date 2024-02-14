@@ -32,11 +32,6 @@ const ProductPage = (props) => {
         props.history.push(`/cart/${productID}?qty=${qty}`)
     }
 
-    // const addToWishlist = () =>{
-    //     props.history.push(`/wishlist/${productID}?qty=${qty}`)
-    // }
-
-
 
     return (
 

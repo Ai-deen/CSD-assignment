@@ -114,7 +114,7 @@ const OrderDetails = (props) => {
                                             <div className="row1 order-row1">
                                                 <div className="small">
                                                     <img src={item.image}
-                                                    alt= ""
+                                                    alt= "Product Image"
                                                     ></img>
                                                 </div>
                                     
