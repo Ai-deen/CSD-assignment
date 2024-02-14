@@ -4,7 +4,7 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PAYMENT_METHOD, CART_SAVE_SH
 // dotenv.config();
 
 // const API = process.env.API ;
-const API  = 'http://localhost:4001';
+const API  = 'https://kass.onrender.com';
 
 export const addToCart = (productID,qty) => async(dispatch, getState) =>{
     const {data} = await axios.get( API +`/api/products/${productID}`);

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import "../styles/VendorProductCard.css";
 
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const ManageProducts = () => {
   const vendorSignin = useSelector((state) => state.vendorSignin);
