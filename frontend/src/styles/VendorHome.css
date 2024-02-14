@@ -54,7 +54,7 @@
   margin: 0.5rem 0; /* Adjust margin for better spacing */
   font-size: 0.8rem; /* Increase font size for better readability */
   color: #fff; /* White text color */
-  background-color: #e0b030; /* Yellow background color */
+  background-color: #f0c040; /* Yellow background color */
   border: none; /* Remove border */
   padding: 10px 20px; /* Add padding */
   border-radius: 5px; /* Add border radius */
@@ -64,6 +64,6 @@
 }
 
 .vendor-link:hover {
-  background-color: #d1a121; /* Darker yellow on hover */
+  background-color: #e0b030; /* Darker yellow on hover */
 }
 

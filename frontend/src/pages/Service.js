@@ -92,33 +92,8 @@ const ServicePage = () => {
 
             </div>
 
-            <button type="submit">Submit</button>
+            <button className="service-submit-button" type="submit">Submit</button>
           </form>
-        </div>
-
-        <div className="col-4">
-          <h2>Services</h2>
-          <ul>
-            {services.map((service, index) => (
-              <li key={index}>
-                <p>{service.description}</p>
-                <p>Type: {service.type}</p>
-                <p>Location: {service.location}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="col-4">
-          <h2>Services</h2>
-          <ul>
-            {services.map((service, index) => (
-              <li key={index}>
-                <p>{service.description}</p>
-                <p>Type: {service.type}</p>
-                <p>Location: {service.location}</p>
-              </li>
-            ))}
-          </ul>
         </div>
         
       </div>
