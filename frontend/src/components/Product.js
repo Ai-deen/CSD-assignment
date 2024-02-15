@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import Rating from './Rating';
 import "../styles/Product.css";
-import { Link } from 'react-router-dom';
-const Product = ({ product, addToWishlist }) => {
+import { useDispatch } from 'react-redux';
+import { Link} from 'react-router-dom'; // Import useHistory
+import { addToWishlist } from '../actions/WishlistActions';
+const Product = ({ product}) => {
   const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
+  const dispatch = useDispatch(); // Initialize useHistory
 
   const handleAddToWishlist = () => {
-    addToWishlist(product);
+    dispatch(addToWishlist(product._id));
     setIsAddedToWishlist(true);
   };
 

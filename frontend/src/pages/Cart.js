@@ -40,8 +40,8 @@ const Cart = (props) => {
         <div>
             <Link to="/" className="back-res">Back to home</Link>
 
-            <div className="row-container">
-                <div className="col-4">
+            <div className="cart-container">
+                <div className="col-10">
                     <h1>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
                         <MessageBox>
@@ -54,9 +54,7 @@ const Cart = (props) => {
                                     <li key={item.product}>
                                         <div className="row1">
                                             <div className="small">
-                                                <img src={item.image}
-                                                alt= ""
-                                                ></img>
+                                             <img src={item.image} alt="Product Image" />
                                             </div>
 
                                             <div className="min-30">

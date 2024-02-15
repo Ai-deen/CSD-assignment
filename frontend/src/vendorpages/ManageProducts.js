@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/VendorProductCard.css";
 import VendorHeader from "./VendorHeader";
 
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const ManageProducts = () => {
   const vendorSignin = useSelector((state) => state.vendorSignin);

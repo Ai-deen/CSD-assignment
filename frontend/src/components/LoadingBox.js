@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import LoopIcon from '@material-ui/icons/Loop';
 import "../styles/LoadingBox.css"
 
 const LoadingBox = () => {
     return (
         <div className="loading-box">
-            <LoopIcon/>
+            <LoopIcon data-testid="loop-icon" />
         </div>
     )
 }
 
-export default LoadingBox
+export default LoadingBox;

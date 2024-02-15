@@ -38,6 +38,8 @@ import PlaceService from "../pages/PlaceService";
 import ServiceDetails from "../pages/ServiceDetails";
 import Wishlist from "../pages/Wishlist";
 import AdminHome from "../pages/Admin/AdminHome";
+import About from "../pages/AboutUs";
+import Contact from "../pages/ContactUs";
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -61,6 +63,8 @@ const App = () => {
           <Route exact path="/cart/:id?" component={Cart}></Route>
           <Route exact path="/signin" component={SignIn}></Route>
           <Route exact path="/register" component={Register}></Route>
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
           <Route
             exact
             path="/registerVendor"

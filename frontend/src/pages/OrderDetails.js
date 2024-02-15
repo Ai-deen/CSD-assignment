@@ -10,7 +10,7 @@ import { ORDER_PAY_RESET } from '../constants/OrderConstant';
 import '../styles/PlaceOrder.css';
 import '../styles/OrderDetails.css';
 
-const API = 'http://localhost:4001';
+const API = 'https://kass.onrender.com';
 
 const OrderDetails = (props) => {
   const orderID = props.match.params.id;

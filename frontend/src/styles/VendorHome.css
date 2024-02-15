@@ -116,6 +116,9 @@
   padding: 30px;
   font-size: 20px;
   align-items: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
 }
 
 .vendor-link {

@@ -1,24 +1,39 @@
-// reducers/wishlistReducer.js
-import { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from "../constants/WishlistConstant";
+import { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM, WISHLIST_CLEAR } from "../constants/WishlistConstant";
 
-export const wishlistReducer = (state = [], action) => {
-  switch (action.type) {
-    case WISHLIST_ADD_ITEM:
-      const productToAdd = action.payload;
-      const existingProduct = state.find((item) => item._id === productToAdd._id);
+export const wishlistReducer = (state = { wishlistItems: [] }, action) => {
+    switch(action.type) {
+        case WISHLIST_ADD_ITEM:
+            const item = action.payload;
+            const existItem = state.wishlistItems.find(x => x.product === item.product);
+            if (existItem) {
+                return {
+                    ...state,
+                    wishlistItems: state.wishlistItems.map(x =>
+                        x.product === existItem.product ? item : x
+                    )
+                };
+            } else {
+                return {
+                    ...state,
+                    wishlistItems: [...state.wishlistItems, item]
+                };
+            }
 
-      if (existingProduct) {
-        return state; 
-      }
+        case WISHLIST_REMOVE_ITEM:
+            return {
+                ...state,
+                wishlistItems: state.wishlistItems.filter(x => x.product !== action.payload)
+            };
 
-      return [...state, productToAdd]; 
+        case WISHLIST_CLEAR:
+            return {
+                ...state,
+                wishlistItems: []
+            };
 
-    case WISHLIST_REMOVE_ITEM:
-      const productIdToRemove = action.payload;
-      return state.filter((item) => item._id !== productIdToRemove); 
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };
 
 export default wishlistReducer;

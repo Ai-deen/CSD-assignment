@@ -6,10 +6,11 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import "../styles/SignIn.css";
 
-const SignIn = (props) => {
+const  SignIn = (props)=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('user'); // Default to 'user' sign-in
+    const [emailError, setEmailError] = useState('');
 
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
@@ -29,14 +30,24 @@ const SignIn = (props) => {
     const { deliveryInfo, loadi, eor } = deliverySignin;
     const dispatch = useDispatch();
 
+    function validateEmail(email){
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
     const signInHandler = (e) => {
         e.preventDefault();
 
+        // Validate email format
+        if (!validateEmail(email)) {
+            setEmailError('Please enter a valid email address.');
+            return;
+        } else {
+            setEmailError('');
+        }
+
         // Dispatch the appropriate sign-in action based on userType
-        console.log(userInfo)
-        console.log(vendorInfo)
-        console.log(deliveryInfo)
-        if (userType ==="vendor"){
+        if (userType === "vendor") {
             dispatch(signinVendor(email, password, userType));
         }
         else if (userType === "delivery") {
@@ -82,16 +93,17 @@ const SignIn = (props) => {
             </select>
           </div>
 
-          <div className="form-ip-sec">
-            <label htmlFor="email">E-mail:</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter email"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+                <div className="form-ip-sec">
+                    <label htmlFor="email">E-mail:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {emailError && <div className="error-message">{emailError}</div>}
+                </div>
 
           <div className="form-ip-sec">
             <label htmlFor="password">Password:</label>

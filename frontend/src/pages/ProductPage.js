@@ -33,8 +33,6 @@ const ProductPage = (props) => {
     }
 
 
-
-
     return (
 
         <div>

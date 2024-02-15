@@ -59,6 +59,7 @@ const reducer = combineReducers({
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
   vendorDetails: vendorDetailsReducer,
+  vendorDetails: vendorDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   vendorRegister: vendorRegisterReducer,
   vendorSignin: vendorSigninReducer,
@@ -88,10 +89,5 @@ const loggingThunk = ({ dispatch, getState }) => (next) => (action) => {
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    reducer,
-    initialState,
-    composeEnhancer(applyMiddleware(loggingThunk, thunk)),
-);
-
+const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));
 export default store;

@@ -13,7 +13,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import SearchIcon from "@material-ui/icons/Search";
 import logo from "../images/kasslogo.png";
-import { vendorUpdateProfileReducer } from "../reducers/UserReducer";
+// import { vendorUpdateProfileReducer } from "../reducers/UserReducer";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -33,6 +33,9 @@ const Header = (props) => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  const wishlist = useSelector((state) => state.wishlist);
+  const { wishlistItems } = wishlist;
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -91,19 +94,16 @@ const Header = (props) => {
               </Link>
             </li>
             <li>
-              <Link to="/wishlist"><FavoriteIcon/>
-                {
-                  cartItems.length > 0 && 
-                  (<p className="badge">{cartItems.length}</p>)
-                }
+            <Link to="/wishlist">
+                <FavoriteIcon />
+                {wishlistItems.length > 0 && (
+                  <p className="badge">{wishlistItems.length}</p>
+                )}
               </Link>
             </li>
             <li>
               <Link to="/servicerList"><PhonelinkSetupIcon/>
-                {
-                  cartItems.length > 0 && 
-                  (<p className="badge">{cartItems.length}</p>)
-                }
+
               </Link>
             </li>
 

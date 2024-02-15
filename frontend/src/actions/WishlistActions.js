@@ -1,30 +1,40 @@
-import axios from '../Axios';
-import { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from '../constants/WishlistConstant';
+import axios from "../Axios";
+import { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from "../constants/WishlistConstant";
 
-const API = 'http://localhost:4001'; // Replace with your actual API endpoint
+const API = 'https://kass.onrender.com';
 
-export const addToWishlist = (productId) => async (dispatch) => {
-  try {
-    const { data } = await axios.get(`${API}/api/products/${productId}`);
+export const addToWishlist = (productID) => async(dispatch, getState) => {
+    try {
+      console.log("WE ARE HEREEE!!!!!")
+        const { data } = await axios.get(`${API}/api/products/${productID}`);
 
-    dispatch({
-      type: WISHLIST_ADD_ITEM,
-      payload: {
-        _id: data._id,
-        name: data.name,
-        image: data.image,
-        price: data.price,
-      },
-    });
-  } catch (error) {
-    console.error('Error adding to wishlist:', error);
-  }
+        dispatch({
+            type: WISHLIST_ADD_ITEM,
+            payload: {
+                name: data.name,
+                image: data.image,
+                price: data.price,
+                product: data._id
+            }
+        });
+
+        localStorage.setItem(
+            'wishlistItems',
+            JSON.stringify(getState().wishlist.wishlistItems)
+        );
+    } catch (error) {
+        console.error('Error adding item to wishlist:', error);
+    }
 };
 
-export const removeFromWishlist = (productId) => (dispatch) => {
-  dispatch({
-    type: WISHLIST_REMOVE_ITEM,
-    payload: productId,
-  });
+export const removeFromWishlist = (productID) => (dispatch, getState) => {
+    dispatch({
+        type: WISHLIST_REMOVE_ITEM,
+        payload: productID
+    });
 
+    localStorage.setItem(
+        'wishlistItems',
+        JSON.stringify(getState().wishlist.wishlistItems)
+    );
 };

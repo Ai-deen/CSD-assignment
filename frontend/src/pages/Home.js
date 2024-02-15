@@ -6,9 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../styles/Home.css"
 import Product from '../components/Product'
+import { Link } from 'react-router-dom';
 import { listProducts } from '../actions/ProdcutActions'
 import carousel from '../images/carousel kass.png';
-
+import reactRouterDom from 'react-router-dom';
 const Home = () => {
 
     const dispatch = useDispatch();
@@ -118,10 +119,36 @@ const Home = () => {
 
                 </Slider>
             </div>
+            
+            <footer style={footerStyle}>
+                <div className="about-section">
+                    <Link to="/about" style={linkStyle}>About Us</Link>
+                </div>
+                <div className="contact-section">
+                    <Link to="/contact" style={linkStyle}>Contact Us</Link>
+                </div>
+            </footer>
 
 
         </div>
     )
 }
+const footerStyle = {
+    backgroundColor: '#f8f9fa',
+    padding: '10px',
+    textAlign: 'center',
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+};
+
+const linkStyle = {
+    color: 'black',
+    textDecoration: 'none',
+    margin: '0 10px'
+};
 
 export default Home

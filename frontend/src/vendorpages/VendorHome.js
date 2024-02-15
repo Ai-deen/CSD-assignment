@@ -20,31 +20,32 @@ const VendorHome = () => {
 
   return (
     <div className="vendor-home-container">
-      <div className="vendor-menu">
-        <div className="vendor-menu-items">
-          <div
-            className="vendor-item"
-            onClick={() => history.push("/add-product")}
-          >
-            Add Products
-          </div>
-          <div
-            className="vendor-item"
-            onClick={() => history.push("/manage-products")}
-          >
-            Manage Products
-          </div>
-          <div
-            className="vendor-item"
-            onClick={() => history.push("/manage-services")}
-          >
-            Manage Services
-          </div>
-          <div className="vendor-item">Add Services</div>
+      <div className="vendor-cardd-container"> 
+      <p className="vendor-welcome-message">Welcome, {vendorInfo.name}!</p>
+
+      <div className="vendor-smallcard-container">
+      <div className="vendor-links-container">
+        <p> Add a new product </p>
+          <Link className="vendor-link" to="/add-product">
+            ADD PRODUCTS
+          </Link>
+        
         </div>
-        <div className="graphs">you are yet to get this</div>
-        <div className="graphs">you are yet to get this</div>
+        <div className="vendor-links-container">
+        <p> Manage your products </p>
+          <Link className="vendor-link" to="/manage-products">
+            MANAGE PRODUCTS
+          </Link>
+        </div>
+        <div className="vendor-links-container">
+        <p> Manage your services </p>
+          <Link className="vendor-link" to="/manage-services">
+          MANAGE SERVICES
+          </Link>
+        
+        </div>
       </div>
+    </div>
     </div>
   );
 };

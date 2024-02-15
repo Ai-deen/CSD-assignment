@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import '../styles/Manageservices.css';
 
-const API = "http://localhost:4001";
+const API = "https://kass.onrender.com";
 
 const ManageServices = () => {
   const vendorSignin = useSelector((state) => state.vendorSignin);

@@ -89,20 +89,19 @@ const ProductForm = () => {
   }
 
   return (
-    <div>
-      <div className="product-form-container">
-        <h2 style={{ padding: "10px 10px 10px 0" }}>Add New Product</h2>
-        <form onSubmit={handleSubmit}>
-          {/* Render your form inputs here */}
-          <label className="form-label">Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="form-input"
-            required
-          />
+    <div className="product-form-container">
+      <h2 className="product-form-heading">Add New Product</h2>
+      <form onSubmit={handleSubmit}>
+        {/* Render your form inputs here */}
+        <label className="form-label">Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className="form-input"
+          required
+        />
 
           <label className="form-label">Image: </label>
           <input
@@ -169,8 +168,7 @@ const ProductForm = () => {
           </button>
         </form>
       </div>
-    </div>
-  );
+  )
 };
 
 export default ProductForm;

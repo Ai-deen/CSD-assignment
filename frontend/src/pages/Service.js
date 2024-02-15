@@ -103,8 +103,11 @@ const ServicePage = () => {
 
               <button type="submit">Submit</button>
             </div>
+
+            <button className="service-submit-button" type="submit">Submit</button>
           </form>
         </div>
+        
       </div>
     </div>
   );
