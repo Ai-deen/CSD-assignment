@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import orderRouter from "./routers/orderRouter.js";
 import deliveryRouter from "./routers/deliveryRouter.js";
 import serviceRouter from "./routers/serviceRouter.js";
+import adminRouter from "./routers/adminRouter.js"
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use("/api/services", serviceRouter);
 app.use("/api/delivery", deliveryRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
+app.use("/as",adminRouter)
 
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");

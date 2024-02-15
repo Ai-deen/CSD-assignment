@@ -36,6 +36,8 @@ import VendorHeader from "../vendorpages/VendorHeader";
 import ServiceShippingAddress from "../pages/ServiceShippingAddress";
 import PlaceService from "../pages/PlaceService";
 import ServiceDetails from "../pages/ServiceDetails";
+import Wishlist from "../pages/Wishlist";
+import AdminHome from "../pages/Admin/AdminHome";
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -81,25 +83,15 @@ const App = () => {
           <Route path="/order/:id" component={OrderDetails}></Route>
           <Route path="/service/:id" component={ServiceDetails}></Route>
           <Route path="/orderhistory" component={OrderHistory}></Route>
+          <Route path="/wishlist" component={Wishlist} />
           <PrivateRoute path="/profile" component={UserProfile}></PrivateRoute>
-          <PrivateRoute
-            path="/vendor-profile"
-            component={VendorProfile}
-          ></PrivateRoute>
-          <Route
-            path="/searchresults/:query"
-            component={SearchResults}
-            exact
-          ></Route>
+          <PrivateRoute path="/vendor-profile" component={VendorProfile}></PrivateRoute>
+          <Route path="/searchresults/:query" component={SearchResults} exact></Route>
           <Route path="/servicerList" component={VendorList} />
           <Route path="/services/:vendorId" component={ServicePage} />
-          <Route
-            path="/category/:cat"
-            component={CategoryBasedPage}
-            exact
-          ></Route>
+          <Route path="/category/:cat" component={CategoryBasedPage} exact ></Route>
 
-          {/* Admin sectiojn routes */}
+          <Route path="/adminhome" component={AdminHome}/>
 
           <Route path="/productlist" component={AllProducts}></Route>
         </Switch>

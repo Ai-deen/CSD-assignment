@@ -18,7 +18,7 @@ import {
   deliveryUpdateProfileReducer,
 } from "./reducers/UserReducer";
 import { serviceCreateReducer, serviceDetailsReducer, serviceMineListReducer, servicePayReducer, serviceReducer} from './reducers/ServiceReducer';
-
+import { wishlistReducer } from './reducers/WishlistReducer';
 
 const initialState = {
   cart: {
@@ -46,6 +46,7 @@ const initialState = {
       : null,
   },
 };
+
 const reducer = combineReducers({
   productList: prodcutListReducer,
   productDetails: prodcutDetailsReducer,
@@ -70,14 +71,27 @@ const reducer = combineReducers({
   serviceCreate: serviceCreateReducer,
   serviceDetails: serviceDetailsReducer,
   servicePay: servicePayReducer,
-  serviceMineList: serviceMineListReducer
+  serviceMineList: serviceMineListReducer,
+  // service: serviceReducer,
+  wishlist:wishlistReducer
 });
+
+// Add logging to the thunk middleware
+const originalThunk = thunk;
+const loggingThunk = ({ dispatch, getState }) => (next) => (action) => {
+    if (typeof action === 'function') {
+        console.log('Thunk function:', action);
+    } else {
+        console.log('Dispatching action:', action);
+    }
+    return originalThunk({ dispatch, getState })(next)(action);
+};
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-    reducer, 
+    reducer,
     initialState,
-    composeEnhancer(applyMiddleware(thunk)),
+    composeEnhancer(applyMiddleware(loggingThunk, thunk)),
 );
 
 export default store;

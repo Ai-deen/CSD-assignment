@@ -8,6 +8,7 @@ import "../styles/Home.css"
 import Product from '../components/Product'
 import { listProducts } from '../actions/ProdcutActions'
 import carousel from '../images/carousel kass.png';
+
 const Home = () => {
 
     const dispatch = useDispatch();

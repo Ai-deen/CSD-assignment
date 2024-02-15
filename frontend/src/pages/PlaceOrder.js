@@ -40,14 +40,14 @@ const PlaceOrder = (props) => {
 
 
     useEffect(() => {
-        if(success){
+        if (success) {
             props.history.push(`/order/${order._id}`);
             dispatch({
                 type: ORDER_CREATE_RESET
             });
         }
-        
-    }, [dispatch, order, props.history, success])
+    }, [dispatch, order, props.history, success, ORDER_CREATE_RESET]);
+    
 
     return (
         <div>

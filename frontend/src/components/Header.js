@@ -1,3 +1,4 @@
+// components/Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
@@ -7,6 +8,7 @@ import { signout, vendorsignout } from "../actions/UserAction";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import SearchIcon from "@material-ui/icons/Search";
@@ -40,11 +42,11 @@ const Header = (props) => {
 
   const usersignOutHandler = () => {
     dispatch(signout());
-    };
-    
-    const vendorsignOutHandler = () => {
-        dispatch(vendorsignout())
-    }
+  };
+
+  const vendorsignOutHandler = () => {
+    dispatch(vendorsignout())
+  }
 
   const [query, setQuery] = useState("");
 
@@ -57,9 +59,9 @@ const Header = (props) => {
         <div className="inner-content">
           <div className="brand">
             <Link to="/">
-              <div class="mr-2">
-                <img src={logo} width={40} height={40} class="pl-2 m-3" />
-                 KASS Electronics
+              <div className="mr-2">
+              <img src={logo} width={40} height={40} className="pl-2 m-3" />
+                KASS Electronics
               </div>
             </Link>
           </div>
@@ -89,13 +91,22 @@ const Header = (props) => {
               </Link>
             </li>
             <li>
-                            <Link to="/servicerList"><PhonelinkSetupIcon/>
-                                {
-                                    cartItems.length > 0 && 
-                                    (<p className="badge">{cartItems.length}</p>)
-                                }
-                            </Link>
-                        </li>
+              <Link to="/wishlist"><FavoriteIcon/>
+                {
+                  cartItems.length > 0 && 
+                  (<p className="badge">{cartItems.length}</p>)
+                }
+              </Link>
+            </li>
+            <li>
+              <Link to="/servicerList"><PhonelinkSetupIcon/>
+                {
+                  cartItems.length > 0 && 
+                  (<p className="badge">{cartItems.length}</p>)
+                }
+              </Link>
+            </li>
+
             <li>
               {vendorInfo ? (
                 <div className="header-dropdown">
