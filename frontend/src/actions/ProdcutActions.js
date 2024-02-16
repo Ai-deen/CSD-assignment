@@ -13,7 +13,7 @@ import {
 // dotenv.config();
 // const API = process.env.API ;
 
-const API  = 'https://kass.onrender.com';
+const API  = 'http://localhost:4001';
 
 export const listProducts = () => async (dispatch) =>{
     dispatch({

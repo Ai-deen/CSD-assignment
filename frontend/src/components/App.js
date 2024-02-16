@@ -23,7 +23,7 @@ import UserProfile from "../pages/UserProfile";
 import VendorProfile from "../pages/VendorProfile";
 import PrivateRoute from "./PrivateRoute";
 import SearchResults from "../pages/SearchResults";
-import AllProducts from "../pages/Admin/AllProducts";
+import AllProducts from "../adminpages/AllProducts";
 import CategoryBasedPage from "../pages/CategoryBasedPage";
 import VendorHome from "../vendorpages/VendorHome";
 import ProductForm from "../vendorpages/ProductForm";
@@ -37,9 +37,13 @@ import ServiceShippingAddress from "../pages/ServiceShippingAddress";
 import PlaceService from "../pages/PlaceService";
 import ServiceDetails from "../pages/ServiceDetails";
 import Wishlist from "../pages/Wishlist";
-import AdminHome from "../pages/Admin/AdminHome";
+import AdminHome from "../adminpages/AdminHome";
 import About from "../pages/AboutUs";
 import Contact from "../pages/ContactUs";
+import UserList from "../adminpages/AllUsers";
+import VendorList_a from "../adminpages/AllVendors";
+import DeliveryPersons_a from "../adminpages/AllDeliveryPeople";
+// import AdminHeader from "../adminpages/AdminHeader";
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -49,9 +53,11 @@ const App = () => {
   const { vendorInfo, loading, error } = vendorSignin;
   
   return (
+    console.log(userInfo),
     <>
       <Router>
         <>{vendorInfo ? <VendorHeader /> : <Header />}</>
+        {/* <>{userInfo && userInfo.isAdmin ? <AdminHeader /> : <Header />}</> */}
 
         <Switch>
           <Route path="/" component={Home} exact></Route>
@@ -96,6 +102,10 @@ const App = () => {
           <Route path="/category/:cat" component={CategoryBasedPage} exact ></Route>
 
           <Route path="/adminhome" component={AdminHome}/>
+          <Route path="/admin/users" component={UserList}/>
+          <Route path="/admin/vendors" component={VendorList_a}/>
+          <Route path="/admin/deliverypeople" component={DeliveryPersons_a}/>
+          {/* <Route path="/users_a/:id" component={UserDetails_a} /> */}
 
           <Route path="/productlist" component={AllProducts}></Route>
         </Switch>

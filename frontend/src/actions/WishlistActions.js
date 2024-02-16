@@ -1,7 +1,7 @@
 import axios from "../Axios";
 import { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from "../constants/WishlistConstant";
 
-const API = 'https://kass.onrender.com';
+const API = 'http://localhost:4001';
 
 export const addToWishlist = (productID) => async(dispatch, getState) => {
     try {

@@ -20,7 +20,11 @@ const  SignIn = (props)=>{
         : "/vendorhome";
     const redirect2 = props.location.search
       ? props.location.search.split("=")[1]
-      : "/delivery";
+      : "/deliveryhome";
+      const redirect3 = props.location.search
+      ? props.location.search.split("=")[1]
+      : "/adminhome";
+
 
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo, loading, error } = userSignin;
@@ -59,17 +63,22 @@ const  SignIn = (props)=>{
     }
 
     useEffect(() => {
-        if (userInfo) {
-            props.history.push(redirect);
-        }
-        if (vendorInfo) {
-            props.history.push(redirect1)
-        }
-        if (deliveryInfo) {
-            props.history.push(redirect2)
-        }
-    }, [props.history, redirect, userInfo,vendorInfo, deliveryInfo, dispatch]);
-
+      console.log('useEffect triggered');
+      console.log('userInfo:', userInfo);
+      if (userInfo) {
+          props.history.push(redirect);
+      }
+      if (vendorInfo) {
+          props.history.push(redirect1);
+      }
+      if (deliveryInfo) {
+          props.history.push(redirect2);
+      }
+      if (userInfo && userInfo.isAdmin) {
+          props.history.push(redirect3);
+      }
+    }, [props.history, redirect, redirect1, redirect2,redirect2, userInfo, vendorInfo, deliveryInfo, dispatch]);
+  
     return (
       <div className="signin-container">
         <form className="form" onSubmit={signInHandler}>

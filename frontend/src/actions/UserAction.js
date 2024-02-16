@@ -39,7 +39,7 @@ import axios from "../Axios";
 // dotenv.config();
 // const API = process.env.API ;
 
-const API = "https://kass.onrender.com";
+const API = "http://localhost:4001";
 
 export const register =
   (name, email, password, address, location, phoneNumber) =>

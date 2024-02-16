@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux';
-import { listProducts } from '../../actions/ProdcutActions';
-import ProductList from '../../components/ProductList'
-import "../../styles/AllProducts.css"
+import { listProducts } from '../actions/ProdcutActions';
+import ProductList from '../components/ProductList'
+import "../styles/AllProducts.css"
 
 const AllProducts = () => {
 
